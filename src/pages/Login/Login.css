@@ -1,0 +1,140 @@
+/* Global styles */
+html, body {
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: #333;
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+}
+
+body {
+  background-image: url('https://media.gettyimages.com/id/1235251652/photo/sep-11-idaho-at-indiana.jpg?s=1024x1024&w=gi&k=20&c=qet9A8fL15DYHlHYI9F0Xw6nQi61EK7KDERagnli0lI=');
+  background-size: cover;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Login form styles */
+.formContainer {
+  max-width: 500px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.formContainer label {
+  font-weight: bold;
+}
+
+.formContainer input[type="email"],
+.formContainer input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.formContainer input[type="email"]:focus,
+.formContainer input[type="password"]:focus {
+  outline: none;
+  border: 1px solid #5b9be5;
+}
+
+.formContainer button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5b9be5;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.formContainer button:hover {
+  background-color: #428bca;
+}
+
+.formContainer a {
+  text-decoration: none;
+  color: grey;
+  cursor: pointer;
+}
+
+.formContainer a:hover {
+  text-decoration: underline;
+}
+
+.formContainer .d-flex.justify-content-around {
+  margin-top: 20px;
+}
+
+.formContainer .d-flex.justify-content-around:first-of-type {
+  margin-top: 0;
+}
+
+.formContainer .mb-3:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Password reset form styles */
+.formContainer.passwordReset {
+  max-width: 400px;
+  padding: 20px;
+}
+
+.formContainer.passwordReset label {
+  font-size: 18px;
+}
+
+.formContainer.passwordReset input[type="email"] {
+  margin-bottom: 30px;
+}
+
+.formContainer.passwordReset button {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #28a745;
+}
+
+.formContainer.passwordReset button:hover {
+  background-color: #218838;
+}
+
+/* Google button styles */
+.react-google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.react-google-button:hover {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.react-google-button img {
+  margin-right: 10px;
+}

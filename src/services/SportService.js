@@ -1,0 +1,12 @@
+import { db } from "../config/firebase";
+import "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+
+export const fetchAllVenues = async () => {
+  const collectionRef = await getDocs(collection(db, "Venues"));
+  let collectionRefArr = [];
+  collectionRef.forEach((doc) => {
+    collectionRefArr.push(doc.data());
+  });
+  return collectionRefArr;
+};
