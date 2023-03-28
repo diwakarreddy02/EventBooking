@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
@@ -167,6 +168,11 @@ export default function FormExample() {
             <Button className="col-7" type="submit">
               Register
             </Button>
+            <p className="mt-4 d-flex justify-content-around text-danger text-success ">
+              <Link to="/Login" className="text-danger">
+                Already having account? Login Here
+              </Link>
+            </p>
           </div>
         </Form>
       </div>

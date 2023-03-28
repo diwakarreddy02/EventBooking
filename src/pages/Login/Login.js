@@ -75,7 +75,7 @@ export default function Login() {
 
   return (
     <>
-	  <div className="header">
+      <div className="header">
         <h1>IU Eventia</h1>
       </div>
       <div
