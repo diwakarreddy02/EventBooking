@@ -6,6 +6,7 @@ import Register from "./pages/Register/Register";
 import ContactForm from "./pages/ContactUs/ContactUs";
 import { Route, Routes } from "react-router-dom";
 import SportSearch from "./pages/SportSearch/SportSearch";
+import SearchEvents from "./pages/SearchEvents/SearchEvents";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
         <Route path="/registration" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/sportsearch" element={<SportSearch />} />
+        <Route path="/Search" element={<SportSearch />} />
         <Route path="/Contact" element={<ContactForm />} />
+        <Route path="/Event" element={<SearchEvents />} />
       </Routes>
     </div>
   );

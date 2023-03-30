@@ -10,3 +10,12 @@ export const fetchAllVenues = async () => {
   });
   return collectionRefArr;
 };
+
+export const fetchAllEvents = async () => {
+  const collectionRef = await getDocs(collection(db, "Events"));
+  let collectionRefArr = [];
+  collectionRef.forEach((doc) => {
+    collectionRefArr.push(doc.data());
+  });
+  return collectionRefArr;
+};
