@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import NavbarMain from "../../components/NavbarMain/NavbarMain";
 import "./Dashboard.css";
 import Form from "react-bootstrap/Form";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
-  const [search, SetSearch] = useState("");
-  console.log(search);
+  const [search, setSearch] = useState("");
+  const auth = getAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    navigate("/login", { replace: true }); 
+  console.log(search); };
   return (
     <>
       <div style={{ height: "100vh" }}>
@@ -18,12 +26,13 @@ export default function Dashboard() {
           <Form className="col-3">
             <Form.Control
               type="search"
-              onChange={(e) => SetSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search"
               className="me-2 "
               aria-label="Search"
             />
           </Form>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       </div>
     </>
