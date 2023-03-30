@@ -11,42 +11,33 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 import "./Register.css";
 import { db } from "../../config/firebase";
-import { collection, getDocs } from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
-import { initializeApp } from "firebase/app";
+import { addDoc, collection } from "firebase/firestore";
+
 export default function FormExample() {
   const [validated, setValidated] = useState(false);
-
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
   const [Username, setuser] = useState("");
   const [Email, setEmail] = useState("");
+  const [Role, setRole] = useState("");
   const [Password, setPassword] = useState("");
-  const [ConfirmPassword, setConfirmPassword] = useState("");
-
   // Function to post data to Firestore
+
   const Registersubmit = async (e) => {
     e.preventDefault();
     setValidated(true);
-    await auth.createUserWithEmailAndPassword(Email, Password);
-    const postData = async (collectionName, data) => {
-      try {
-        const docRef = await db.collection(collectionName).add(data);
-        console.log("Document written with ID: ", docRef.id);
-      } catch (error) {
-        console.error("Error adding document: ", error);
-      }
-    };
-
-    postData("Users", {
-      FirstName: setFirstName,
-      LastName: setLastName,
-      Email: setEmail,
-    })
-      .then((res) => {
-        console.log(res);
+    await createUserWithEmailAndPassword(auth, Email, Password)
+      .then(async (res) => {
         const euser = auth.currentUser;
-        sendEmailVerification(euser)
+        sendEmailVerification(euser);
+        console.log(res);
+        await addDoc(collection(db, "Users"), {
+          FirstName: FirstName,
+          LastName: LastName,
+          Email: Email,
+          Role: Role,
+          UserName: Username,
+        })
           .then((res) => {
             console.log(res);
           })
@@ -69,14 +60,22 @@ export default function FormExample() {
         className="col-12 d-flex justify-content-around"
       >
         <Form
-          className="formContainerReg"
+          className="formContainerReg p-5"
           noValidate
           validated={validated}
           onSubmit={Registersubmit}
         >
           <Row className="mb-3">
+            <Form.Group className="col-12 mb-3">
+              <Form.Select
+                name="submissiontType"
+                onChange={(e) => setRole(e.target.value)}
+              >
+                <option value="Owner">Owner</option>
+                <option value="Players">Players</option>
+              </Form.Select>
+            </Form.Group>
             <Form.Group className="col-6" controlId="validationCustom01">
-              <Form.Label>First name</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -89,11 +88,10 @@ export default function FormExample() {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="col-6" controlId="validationCustom02">
-              <Form.Label>Last name</Form.Label>
               <Form.Control
                 required
                 type="text"
-                placeholder="Last name"
+                placeholder="Last Name"
                 onChange={(e) => setLastName(e.target.value)}
               />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -105,7 +103,6 @@ export default function FormExample() {
 
           <Row className="mb-3">
             <Form.Group className="col-6" controlId="validationCustomUsername">
-              <Form.Label>Username</Form.Label>
               <InputGroup hasValidation>
                 <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                 <Form.Control
@@ -121,8 +118,7 @@ export default function FormExample() {
               </InputGroup>
             </Form.Group>
 
-            <Form.Group className="col-6" controlId="formBasicEmail">
-              <Form.Label>Email</Form.Label>
+            <Form.Group className="col-6">
               <Form.Control
                 type="email"
                 placeholder="Email"
@@ -136,7 +132,6 @@ export default function FormExample() {
           </Row>
           <Row className="mx">
             <Form.Group className="col-6" controlId="validationCustom03">
-              <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"
@@ -150,29 +145,30 @@ export default function FormExample() {
             </Form.Group>
 
             <Form.Group className="col-6" controlId="validationCustom04">
-              <Form.Label>Confirm Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Re-enter password"
                 required
                 minLength={8}
                 pattern={Password}
-                onChange={(e) => setConfirmPassword(e.target.value)}
               />
               <Form.Control.Feedback type="invalid">
                 Password donot match
               </Form.Control.Feedback>
             </Form.Group>
           </Row>
-          <div className="mt-4 d-flex justify-content-around">
-            <Button className="col-7" type="submit">
+          <div className="mt-4 d-flex  flex-column ">
+            <Button className="mx-5" type="submit">
               Register
             </Button>
-            <p className="mt-4 d-flex justify-content-around text-danger text-success ">
-              <Link to="/Login" className="text-danger">
-                Already having account? Login Here
-              </Link>
-            </p>
+
+            <Link
+              to="/Login"
+              className="mt-4 "
+              style={{ textDecoration: "none" }}
+            >
+              Already having account? Login Here
+            </Link>
           </div>
         </Form>
       </div>

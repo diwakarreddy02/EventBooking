@@ -16,7 +16,7 @@ export default function NavbarMain() {
           <Nav className="me-auto"></Nav>
           <Nav>
             {navbarItems.map((element, index) => (
-              <Nav.Link key={index} eventKey={2} href="/ContactUs">
+              <Nav.Link key={index} href={"/" + element}>
                 {element}
               </Nav.Link>
             ))}

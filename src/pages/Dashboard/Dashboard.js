@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import NavbarMain from "../../components/NavbarMain/NavbarMain";
 import "./Dashboard.css";
 import Form from "react-bootstrap/Form";
@@ -7,10 +6,9 @@ import Form from "react-bootstrap/Form";
 export default function Dashboard() {
   const [search, SetSearch] = useState("");
   console.log(search);
-  const navigate = useNavigate();
   return (
     <>
-      <div style={{ height: "100vh" }} className="BackgroundImg">
+      <div style={{ height: "100vh" }}>
         <NavbarMain />
         <div className="dashBoardContent">
           <h2>Make Your Dream Come True</h2>

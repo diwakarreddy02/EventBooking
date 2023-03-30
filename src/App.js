@@ -13,9 +13,9 @@ function App() {
       <Routes>
         <Route path="/registration" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/sportsearch" element={<SportSearch />} />
-        <Route path="/ContactUs" element={<ContactForm />} />
+        <Route path="/Contact" element={<ContactForm />} />
       </Routes>
     </div>
   );

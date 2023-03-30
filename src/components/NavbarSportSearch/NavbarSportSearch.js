@@ -26,10 +26,7 @@ export default function NavbarSportSearch() {
           </Nav>
 
           <Nav>
-            <Form.Select
-              style={{ paddingRight: "7rem" }}
-              aria-label="Default select example"
-            >
+            <Form.Select style={{ paddingRight: "7rem" }}>
               <option>Open this select menu</option>
               <option value="1">Bloomington</option>
               <option value="2">Indianapolis</option>
