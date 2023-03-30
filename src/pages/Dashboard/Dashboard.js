@@ -12,10 +12,9 @@ export default function Dashboard() {
 
   const handleLogout = async () => {
     await signOut(auth);
-=======
-    navigate("/login", { replace: true }); 
-  console.log(search); };
->>>>>>> 9c1b09a5dd9610e2a20cdad1f48a0129b7099ce6
+    navigate("/login", { replace: true });
+    console.log(search);
+  };
   return (
     <>
       <div style={{ height: "100vh" }}>
