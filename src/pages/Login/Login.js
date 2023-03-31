@@ -113,7 +113,7 @@ export default function Login() {
               <a
                 style={{
                   textDecoration: "none",
-                  color: "grey",
+                  color: "blue",
                   cursor: "pointer",
                 }}
                 onClick={() => setPasswordReset(true)}
@@ -124,6 +124,18 @@ export default function Login() {
           ) : (
             <></>
           )}
+          <div className="d-flex justify-content-around mt-3">
+  <a
+    style={{
+      textDecoration: "none",
+      color: "blue",
+      cursor: "pointer",
+    }}
+    onClick={() => navigate("/registration")}
+  >
+    Do not have an account? Register
+  </a>
+</div>
           {!passwordReset ? (
             <div className=" d-flex justify-content-around mt-4">
               {" "}
