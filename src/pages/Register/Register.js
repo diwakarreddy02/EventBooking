@@ -19,10 +19,10 @@ export default function FormExample() {
   const [LastName, setLastName] = useState("");
   const [Username, setuser] = useState("");
   const [Email, setEmail] = useState("");
-  const [Role, setRole] = useState("");
+  const [Role, setRole] = useState("Player");
   const [Password, setPassword] = useState("");
   // Function to post data to Firestore
-
+  console.log(Role);
   const Registersubmit = async (e) => {
     e.preventDefault();
     setValidated(true);
@@ -72,7 +72,7 @@ export default function FormExample() {
                 onChange={(e) => setRole(e.target.value)}
               >
                 <option value="Owner">Owner</option>
-                <option value="Players">Players</option>
+                <option value="Player">Player</option>
               </Form.Select>
             </Form.Group>
             <Form.Group className="col-6" controlId="validationCustom01">
