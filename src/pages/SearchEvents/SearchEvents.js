@@ -1,39 +1,33 @@
 import React, { useEffect, useState } from "react";
-import NavbarSportSearch from "../../components/NavbarSportSearch/NavbarSportSearch";
-import { fetchAllEvents } from "../../services/SportService";
-import Card from "react-bootstrap/Card";
-import { alignPropType } from "react-bootstrap/esm/types";
+import "./SearchEvents.css";
+import { db } from "../../config/firebase";
+import { query } from "express";
+import { element } from "prop-types";
 
-export default function EventSearch() {
-  const [Eventdata, setEventdata] = useState([]);
-  useEffect(() => {
-    fetchAllEvents()
-      .then((res) => {
-        setEventdata(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    console.log(Eventdata);
-  }, []);
-  return (
-    <div>
-      <NavbarSportSearch />
-      <div>
-        {Eventdata.map((element, index) => (
-          <Card style={{ width: "18rem" }}>
-            <Card.Body>
-              <Card.Title></Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">
-                {element.Capacity}
-              </Card.Subtitle>
-              <Card.Text>{element.city}</Card.Text>
-              <Card.Text>{element.sport}</Card.Text>
-              <Card.Text>{element.venue}</Card.Text>
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-}
+// export default function SearchEvents() {
+//   const [query, setquery] = useState("");
+//   const fetchAllEvents = async () => {
+//     const response = db.collection("Events");
+//     const data = await response.get();
+//     data.docs.forEach((item) => {
+//       setquery([...query, item.data()]);
+//     });
+//   };
+//   useEffect(() => {
+//     fetchAllEvents();
+//   }, []);
+//   return (
+//     <div>
+//       {query &&
+//         query.map((element) => {
+//           return (
+//             <div className="container">
+//               <h4>{element.venue}</h4>
+//               <p>{element.city}</p>
+//               <p>{element.sport}</p>
+//             </div>
+//           );
+//         })}
+//     </div>
+//   );
+// }

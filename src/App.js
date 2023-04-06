@@ -7,6 +7,7 @@ import ContactForm from "./pages/ContactUs/ContactUs";
 import { Route, Routes } from "react-router-dom";
 import SportSearch from "./pages/SportSearch/SportSearch";
 import SearchEvents from "./pages/SearchEvents/SearchEvents";
+import Bookingpage from "./pages/Bookingpage/Bookingpage";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Search" element={<SportSearch />} />
         <Route path="/Contact" element={<ContactForm />} />
-        <Route path="/Event" element={<SearchEvents />} />
+        <Route path="/Events" element={<SearchEvents />} />
       </Routes>
     </div>
   );
