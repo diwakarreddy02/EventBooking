@@ -1,4 +1,4 @@
-body {
+/* body {
   height: 100%;
 }
 
@@ -15,10 +15,10 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   color: #333;
-}
+} */
 
 /* Login form styles */
-.formContainer {
+/* .formContainer {
   max-width: 500px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -90,7 +90,7 @@ h1 {
 }
 
 /* Password reset form styles */
-.formContainer.passwordReset {
+/* .formContainer.passwordReset {
   max-width: 400px;
   padding: 20px;
 }
@@ -111,10 +111,10 @@ h1 {
 
 .formContainer.passwordReset button:hover {
   background-color: #218838;
-}
+} */
 
 /* Google button styles */
-.react-google-button {
+/* .react-google-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,4 +136,94 @@ h1 {
 
 .react-google-button img {
   margin-right: 10px;
+}  */
+
+.body {
+  background-image: url('../../assets/Logg.jpeg');
+  height: 100%;
+}
+
+.header {
+  background-color: #1c2331;
+  padding: 2rem;
+  text-align: center;
+}
+
+.heading {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+
+.subHeading {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.formContainer {
+  margin-top: 2rem;
+}
+
+.form {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 500px;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.input {
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+}
+
+.forgotPasswordContainer {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.forgotPasswordLink {
+  color: #007bff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.registerContainer {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.registerLink {
+  color: #007bff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.googleButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }

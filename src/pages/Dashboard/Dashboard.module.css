@@ -1,0 +1,83 @@
+/* .dashBoardContent {
+  text-align: center;
+} */
+
+
+/* Navbar Styles */
+.navbar {
+  background-color: #292b2c;
+  border-radius: 0;
+}
+
+.nav-link {
+  color: #fff;
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+/* Body Styles */
+.body {
+  background-color: #f8f9fa;
+}
+
+.dashboardContent {
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.heading {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.searchInput {
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+/* Carousel Styles */
+.carouselContainer {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.carouselImage {
+  height: 400px;
+  object-fit: cover;
+}
+
+.carouselCaptionHeading {
+  font-size: 30px;
+}
+
+.carouselCaptionText {
+  font-size: 20px;
+}
+
+/* Logout Button Styles */
+.logoutButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.logoutButton {
+  background-color: #dc3545;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+.logoutButton:hover {
+  background-color: #c82333;
+}
