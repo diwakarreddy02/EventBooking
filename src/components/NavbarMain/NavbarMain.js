@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import "./NavbarMain.css";
 
 export default function NavbarMain() {
-  const navbarItems = ["Events", "Search", "Contact"];
+  const navbarItems = ["Events", "Search", "Contact", "Booking"];
   return (
     <div>
       <Navbar className="NavbarContainer" collapseOnSelect expand="lg">

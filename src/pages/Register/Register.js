@@ -19,7 +19,7 @@ export default function FormExample() {
   const [LastName, setLastName] = useState("");
   const [Username, setuser] = useState("");
   const [Email, setEmail] = useState("");
-  const [Role, setRole] = useState("Player");
+  const [Role, setRole] = useState("Owner");
   const [Password, setPassword] = useState("");
   // Function to post data to Firestore
   console.log(Role);
@@ -82,7 +82,6 @@ export default function FormExample() {
                 placeholder="First name"
                 onChange={(e) => setFirstName(e.target.value)}
               />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
                 Please enter valid First Name
               </Form.Control.Feedback>
@@ -94,7 +93,6 @@ export default function FormExample() {
                 placeholder="Last Name"
                 onChange={(e) => setLastName(e.target.value)}
               />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
                 Please enter valid Last Name
               </Form.Control.Feedback>

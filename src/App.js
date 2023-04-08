@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import SportSearch from "./pages/SportSearch/SportSearch";
 import SearchEvents from "./pages/SearchEvents/SearchEvents";
 import Bookingpage from "./pages/Bookingpage/Bookingpage";
+import Thanks from "./pages/Thanks/Thanks";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route path="/Search" element={<SportSearch />} />
         <Route path="/Contact" element={<ContactForm />} />
         <Route path="/Events" element={<SearchEvents />} />
+        <Route path="/Booking" element={<Bookingpage />} />
+        <Route path="/thankyou" element={<Thanks />} />
       </Routes>
     </div>
   );

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import GoogleButton from "react-google-button";
 import "./Login.css";
 import app from "../../config/firebase";
+import Alert from "react-bootstrap";
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
@@ -125,17 +126,17 @@ export default function Login() {
             <></>
           )}
           <div className="d-flex justify-content-around mt-3">
-  <a
-    style={{
-      textDecoration: "none",
-      color: "blue",
-      cursor: "pointer",
-    }}
-    onClick={() => navigate("/registration")}
-  >
-    Do not have an account? Register
-  </a>
-</div>
+            <a
+              style={{
+                textDecoration: "none",
+                color: "blue",
+                cursor: "pointer",
+              }}
+              onClick={() => navigate("/registration")}
+            >
+              Do not have an account? Register
+            </a>
+          </div>
           {!passwordReset ? (
             <div className=" d-flex justify-content-around mt-4">
               {" "}
