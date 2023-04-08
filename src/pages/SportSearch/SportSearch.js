@@ -24,7 +24,7 @@ export default function SportSearch() {
         {allSportsData.map((element, index) => (
           <Card style={{ width: "18rem" }}>
             <Card.Body>
-              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Img variant="top" src="src/assets/baseball.jpg" />
               <Card.Title>{element.id}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">
                 {element.Capacity}

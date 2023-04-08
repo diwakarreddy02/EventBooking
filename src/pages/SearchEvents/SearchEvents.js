@@ -1,38 +1,39 @@
-// // import React, { useEffect, useState } from "react";
-// // import "./SearchEvents.css";
-// // import { db } from "../../config/firebase";
+// import React, { useEffect, useState } from "react";
+// import "./SearchEvents.css";
+// import { db } from "../../config/firebase";
 
-// // export default function SearchEvents() {
-// //   const [query, setquery] = useState("");
-// //   const fetchAllEvents = async () => {
-// //     const response = db.collection("Events");
-// //     const data = await response.get();
-// //     data.docs.forEach((item) => {
-// //       setquery([...query, item.data()]);
-// //     });
-// //   };
-// //   useEffect(() => {
-// //     fetchAllEvents();
-// //   }, []);
-// //   return (
-// //     <div>
-// //       {query &&
-// //         query.map((element) => {
-// //           return (
-// //             <div className="container">
-// //               <h4>{element.venue}</h4>
-// //               <p>{element.city}</p>
-// //               <p>{element.sport}</p>
-// //             </div>
-// //           );
-// //         })}
-// //     </div>
-// //   );
-// // }
+// export default function SearchEvents() {
+//   const [query, setquery] = useState("");
+//   const fetchAllEvents = async () => {
+//     const response = db.collection("Events");
+//     const data = await response.get();
+//     data.docs.forEach((item) => {
+//       setquery([...query, item.data()]);
+//     });
+//   };
+//   useEffect(() => {
+//     fetchAllEvents();
+//   }, []);
+//   return (
+//     <div>
+//       {query &&
+//         query.map((element) => {
+//           return (
+//             <div className="container">
+//               <h4>{element.venue}</h4>
+//               <p>{element.city}</p>
+//               <p>{element.sport}</p>
+//             </div>
+//           );
+//         })}
+//     </div>
+//   );
+// }
 
 // import { useState, useEffect } from "react";
 // import firebase from "firebase/app";
 // import "firebase/firestore";
+
 // export default function SearchEvents() {
 //   const [data, setData] = useState([]);
 
