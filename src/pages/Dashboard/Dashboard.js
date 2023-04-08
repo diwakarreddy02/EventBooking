@@ -90,6 +90,10 @@ import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import "holderjs";
+import imagefile from "../../assets/cricket.jpg"
+import imagefile2 from "../../assets/soccer.jpg"
+import imagefile3 from "../../assets/basketball.jpg"
+
 export default function Dashboard() {
   const [search, setSearch] = useState("");
   const auth = getAuth();
@@ -126,39 +130,39 @@ export default function Dashboard() {
           <Carousel.Item interval={1000}>
             <img
               className={`${styles.carouselImage} d-block w-100`}
-              src="holder.js/800x400?text=First slide&bg=373940"
+              src={imagefile}
               alt="First slide"
             />
             <Carousel.Caption>
-              <h3 className={styles.carouselCaptionHeading}>First slide label</h3>
+              <h3 className={styles.carouselCaptionHeading}>Cricket</h3>
               <p className={styles.carouselCaptionText}>
-                Nulla vitae elit libero, a pharetra augue mollis interdum.
+                Cricket a game enjoyed by millions
               </p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={500}>
             <img
               className={`${styles.carouselImage} d-block w-100`}
-              src="holder.js/800x400?text=Second slide&bg=282c34"
+              src={imagefile2}
               alt="Second slide"
             />
             <Carousel.Caption>
-              <h3 className={styles.carouselCaptionHeading}>Second slide label</h3>
+              <h3 className={styles.carouselCaptionHeading}>Soccer</h3>
               <p className={styles.carouselCaptionText}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                No caption need as it's the most popular sport.
               </p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img
               className={`${styles.carouselImage} d-block w-100`}
-              src="holder.js/800x400?text=Third slide&bg=20232a"
+              src={imagefile3}
               alt="Third slide"
             />
             <Carousel.Caption>
-              <h3 className={styles.carouselCaptionHeading}>Third slide label</h3>
+              <h3 className={styles.carouselCaptionHeading}>Basketball</h3>
               <p className={styles.carouselCaptionText}>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                This is where legends are made.
               </p>
             </Carousel.Caption>
           </Carousel.Item>
