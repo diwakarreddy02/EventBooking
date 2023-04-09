@@ -3,7 +3,7 @@ import NavbarSportSearch from "../../components/NavbarSportSearch/NavbarSportSea
 import { fetchAllVenues } from "../../services/SportService";
 import "./SportSearch.css";
 import { Button, ListGroup, Modal } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 export default function SportSearch() {
   const [allSportsData, setAllSportsData] = useState([]);
   const [tempData, setTempData] = useState([]);
@@ -74,7 +74,9 @@ export default function SportSearch() {
             <p style={{ color: "grey" }}>{displayDetailsonModal.City}</p>
             <p>{displayDetailsonModal.Description}</p>
             <p>Cost per individual: {displayDetailsonModal.Cost}</p>
-            <input type="date" />
+            <Link to="/Booking">
+              <Button>Book Venue</Button>
+            </Link>
           </Modal.Body>
         </Modal>
       ) : (
