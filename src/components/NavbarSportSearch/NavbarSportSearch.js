@@ -4,7 +4,30 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-export default function NavbarSportSearch() {
+export default function NavbarSportSearch({ tempData, setAllSportsData }) {
+  const setdataSearch = (searchValue) => {
+    setAllSportsData(
+      tempData.filter(
+        (element) =>
+          element.typeofsport.filter(
+            (dataEach) =>
+              dataEach.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
+          ).length
+      )
+    );
+  };
+
+  const selectCitySearch = (cityValue) => {
+    if (cityValue === "none") {
+      setAllSportsData(tempData);
+    } else {
+      setAllSportsData(
+        tempData.filter(
+          (element) => element.City.toLowerCase() === cityValue.toLowerCase()
+        )
+      );
+    }
+  };
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -17,20 +40,23 @@ export default function NavbarSportSearch() {
             <Form className="d-flex">
               <Form.Control
                 type="search"
-                placeholder="Search"
-                className="me-2"
+                placeholder="Search sports..."
+                className="ms-5 pe-5"
+                style={{ width: "26rem" }}
                 aria-label="Search"
+                onChange={(e) => setdataSearch(e.target.value)}
               />
-              <Button variant="outline-success">Search</Button>
             </Form>
           </Nav>
-
           <Nav>
-            <Form.Select style={{ paddingRight: "7rem" }}>
-              <option>Open this select menu</option>
-              <option value="1">Bloomington</option>
-              <option value="2">Indianapolis</option>
-              <option value="3">Martinsville</option>
+            <Form.Select
+              onChange={(e) => selectCitySearch(e.target.value)}
+              style={{ paddingRight: "7rem" }}
+            >
+              <option value="none">Select City...</option>
+              <option value="Bloomington">Bloomington</option>
+              <option value="Indianapolis">Indianapolis</option>
+              <option value="Martinsville">Martinsville</option>
             </Form.Select>
           </Nav>
         </Container>
