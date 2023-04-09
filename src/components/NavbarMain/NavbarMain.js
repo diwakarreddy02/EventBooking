@@ -1,52 +1,3 @@
-// import React from "react";
-// import Nav from "react-bootstrap/Nav";
-// import Navbar from "react-bootstrap/Navbar";
-// import "./NavbarMain.css";
-// import { db } from "../../config/firebase";
-// import { getDoc, doc } from "firebase/firestore";
-// import { getAuth } from "firebase/auth";
-
-// const auth = getAuth();
-
-// export default function NavbarMain() {
-//   let navbarItems = ["Events", "Search", "Contact", "Booking"];
-//   if (auth.currentUser)
-// {
-//   const docRef = doc(db, "Users", auth.currentUser.uid);
-//   getDoc(docRef).then(docSnap => {
-//     if (docSnap.exists())
-//     {
-//       if (docSnap.data().role === "Owner") {
-//         navbarItems.push("AddVenue"); // why won't it show!?!?!?!
-//         window.alert("OK")
-//       }
-//     }
-//   })
-// }
-//   return (
-//     <div>
-//       <Navbar className="NavbarContainer" collapseOnSelect expand="lg">
-//         <Navbar.Brand href="/HomePage">
-//           <p className="NavbarHeading pt-3">IU Eventia</p>
-//         </Navbar.Brand>
-//         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-//         <Navbar.Collapse id="responsive-navbar-nav">
-//           <Nav className="me-auto"></Nav>
-//           <Nav>
-//             {navbarItems.map((element, index) => (
-//               <Nav.Link key={index} href={"/" + element}>
-//                 {element}
-//               </Nav.Link>
-//             ))}
-//           </Nav>
-//         </Navbar.Collapse>
-//       </Navbar>
-//       <hr style={{ marginInline: "20%" }} />
-//     </div>
-//   );
-// }
-
-
 import React, { useEffect, useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -55,9 +6,8 @@ import { db } from "../../config/firebase";
 import { getDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-const auth = getAuth();
-
 export default function NavbarMain() {
+  const auth = getAuth();
   const [navbarItems, setNavbarItems] = useState(
     localStorage.getItem("navbarItems")
       ? JSON.parse(localStorage.getItem("navbarItems"))
@@ -92,6 +42,7 @@ export default function NavbarMain() {
         }
       });
     }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.currentUser]);
 
   return (

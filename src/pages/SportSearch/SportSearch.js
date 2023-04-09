@@ -74,6 +74,7 @@ export default function SportSearch() {
             <p style={{ color: "grey" }}>{displayDetailsonModal.City}</p>
             <p>{displayDetailsonModal.Description}</p>
             <p>Cost per individual: {displayDetailsonModal.Cost}</p>
+            <input type="date" />
           </Modal.Body>
         </Modal>
       ) : (
