@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import NavbarSportSearch from "../../components/NavbarSportSearch/NavbarSportSearch";
 import { fetchAllVenues } from "../../services/SportService";
 import "./SportSearch.css";
-import { Button, ListGroup } from "react-bootstrap";
+import { Button, ListGroup, Modal } from "react-bootstrap";
 
 export default function SportSearch() {
   const [allSportsData, setAllSportsData] = useState([]);
   const [tempData, setTempData] = useState([]);
-
+  const [showModal, setShowModal] = useState(false);
+  const [displayDetailsonModal, setDisplayDetailsOnModal] = useState({});
   useEffect(() => {
     fetchAllVenues()
       .then((res) => {
@@ -19,9 +20,12 @@ export default function SportSearch() {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(allSportsData);
-  }, [allSportsData, tempData]);
+  useEffect(() => {}, [allSportsData, tempData]);
+
+  const showDetails = (element) => {
+    setDisplayDetailsOnModal(element);
+    setShowModal(true);
+  };
 
   return (
     <div>
@@ -47,6 +51,7 @@ export default function SportSearch() {
                   <Button
                     variant="success"
                     className="sportsConatinerDetailsButton"
+                    onClick={() => showDetails(element)}
                   >
                     View Details
                   </Button>
@@ -58,6 +63,22 @@ export default function SportSearch() {
           )}
         </ListGroup>
       </div>
+      {showModal ? (
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title id="example-custom-modal-styling-title">
+              {displayDetailsonModal.Venue_Name}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p style={{ color: "grey" }}>{displayDetailsonModal.City}</p>
+            <p>{displayDetailsonModal.Description}</p>
+            <p>Cost per individual: {displayDetailsonModal.Cost}</p>
+          </Modal.Body>
+        </Modal>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

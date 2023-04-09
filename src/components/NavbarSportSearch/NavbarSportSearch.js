@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
@@ -26,6 +25,15 @@ export default function NavbarSportSearch({ tempData, setAllSportsData }) {
           (element) => element.City.toLowerCase() === cityValue.toLowerCase()
         )
       );
+    }
+  };
+  const selectCostSearch = (costValue) => {
+    if (costValue === "none") {
+      setAllSportsData(tempData);
+    } else if (costValue === "Free") {
+      setAllSportsData(tempData.filter((element) => element.Cost === 0));
+    } else {
+      setAllSportsData(tempData.filter((element) => element.Cost !== 0));
     }
   };
   return (
@@ -57,6 +65,17 @@ export default function NavbarSportSearch({ tempData, setAllSportsData }) {
               <option value="Bloomington">Bloomington</option>
               <option value="Indianapolis">Indianapolis</option>
               <option value="Martinsville">Martinsville</option>
+              <option value="Evansville">Evansville</option>
+            </Form.Select>
+          </Nav>
+          <Nav>
+            <Form.Select
+              onChange={(e) => selectCostSearch(e.target.value)}
+              style={{ paddingRight: "7rem" }}
+            >
+              <option value="none">Select Costing...</option>
+              <option value="Free">Free</option>
+              <option value="Chargeable">Chargeable</option>
             </Form.Select>
           </Nav>
         </Container>
