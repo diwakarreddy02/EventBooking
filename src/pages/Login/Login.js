@@ -95,7 +95,7 @@ export default function Login() {
             <p
               style={{ cursor: "pointer" }}
               className={styles.registerLink}
-              onClick={() => navigate("/registration")}
+              onClick={() => navigate("/Register")}
             >
               Don't have an account? Register
             </p>

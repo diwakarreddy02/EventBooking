@@ -1,7 +1,28 @@
-import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
+import Hero from "../../components/Hero";
+import Eventcard from "../../components/Eventcard";
+import Eventinfo from "../../components/Eventinfo";
+import Footer from "../../components/Footer";
+// import ImageSlider from "../../components/Slider";
 
-const HomePage = () => {
-  return <div>HELLO</div>;
-};
+function HomePage() {
+  return (
+    <>
+      <Navbar />
+      <Hero
+        cName="hero"
+        heroImg="https://images.unsplash.com/photo-1487466365202-1afdb86c764e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80"
+        title="Book for a event now"
+        buttonText="Search Now"
+        url="/"
+        btnClass="show"
+      />
+      <Eventinfo />
+      <Eventcard />
+      <Footer />
+      {/* <ImageSlider/> */}
+    </>
+  );
+}
 
 export default HomePage;

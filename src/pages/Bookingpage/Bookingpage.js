@@ -71,7 +71,7 @@ function BookingPage() {
           >
             Book Slot
           </Button>
-          <Link className={styles.link} to="/thankyou">
+          <Link className={styles.link} to="/SportSearch">
             <Button variant="danger" className={styles.cancelBtn}>
               Cancel
             </Button>
