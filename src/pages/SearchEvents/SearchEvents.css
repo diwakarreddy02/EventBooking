@@ -20,3 +20,11 @@
 .card p {
   margin-bottom: 0;
 }
+
+.sportsConatiner {
+  width: 70%;
+}
+
+.sportsConatinerDetailsButton {
+  height: 50px;
+}

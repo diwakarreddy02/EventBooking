@@ -11,7 +11,7 @@ export default function NavbarMain() {
   const [navbarItems, setNavbarItems] = useState(
     localStorage.getItem("navbarItems")
       ? JSON.parse(localStorage.getItem("navbarItems"))
-      : ["Events", "Search", "Contact", "Booking"]
+      : ["Events", "Search", "Contact"]
   );
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function NavbarMain() {
   return (
     <div>
       <Navbar className="NavbarContainer" collapseOnSelect expand="lg">
-        <Navbar.Brand href="/HomePage">
+        <Navbar.Brand href="/Dashboard">
           <p className="NavbarHeading pt-3">IU Eventia</p>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

@@ -9,6 +9,7 @@ import "holderjs";
 import imagefile from "../../assets/cricket.jpg";
 import imagefile2 from "../../assets/soccer.jpg";
 import imagefile3 from "../../assets/basketball.jpg";
+import Footer from "../../components/Footer";
 
 export default function Dashboard() {
   const [search, setSearch] = useState("");
@@ -27,10 +28,7 @@ export default function Dashboard() {
     <>
       <NavbarMain />
       <div className={styles.dashboardContent}>
-        <h2 className={styles.heading}>
-          Make Your Dreams Come True - Meet Your Favorite Artists, Sports Teams,
-          and Parties
-        </h2>
+        <h2 className={styles.heading}>Welcome to IU Eventia !!!</h2>
       </div>
       <div className="d-flex justify-content-around">
         <Form className="col-3">
@@ -91,6 +89,7 @@ export default function Dashboard() {
           Logout
         </button>
       </div>
+      <Footer />
     </>
   );
 }

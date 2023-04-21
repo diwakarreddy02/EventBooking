@@ -3,9 +3,9 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-export default function NavbarSportSearch({ tempData, setAllSportsData }) {
+export default function NavbarEventSearch({ tempData, setAllEventData }) {
   const setdataSearch = (searchValue) => {
-    setAllSportsData(
+    setAllEventData(
       tempData.filter(
         (element) =>
           element.typeofsport.filter(
@@ -18,22 +18,22 @@ export default function NavbarSportSearch({ tempData, setAllSportsData }) {
 
   const selectCitySearch = (cityValue) => {
     if (cityValue === "none") {
-      setAllSportsData(tempData);
+      setAllEventData(tempData);
     } else {
-      setAllSportsData(
+      setAllEventData(
         tempData.filter(
-          (element) => element.City.toLowerCase() === cityValue.toLowerCase()
+          (element) => element.city.toLowerCase() === cityValue.toLowerCase()
         )
       );
     }
   };
   const selectCostSearch = (costValue) => {
     if (costValue === "none") {
-      setAllSportsData(tempData);
+      setAllEventData(tempData);
     } else if (costValue === "Free") {
-      setAllSportsData(tempData.filter((element) => element.Cost === 0));
+      setAllEventData(tempData.filter((element) => element.Cost === 0));
     } else {
-      setAllSportsData(tempData.filter((element) => element.Cost !== 0));
+      setAllEventData(tempData.filter((element) => element.Cost !== 0));
     }
   };
   return (
@@ -42,10 +42,14 @@ export default function NavbarSportSearch({ tempData, setAllSportsData }) {
         <Navbar bg="light" expand="lg">
           <Container>
             <Nav>
+              <Navbar.Brand href="/Dashboard"> IU Eventia </Navbar.Brand>
+            </Nav>
+
+            <Nav>
               <Form className="d-flex">
                 <Form.Control
                   type="search"
-                  placeholder="Search sports..."
+                  placeholder="Search Events/Activities..."
                   className="ms-5 pe-5"
                   style={{ width: "26rem" }}
                   aria-label="Search"

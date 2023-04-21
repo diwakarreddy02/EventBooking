@@ -24,12 +24,6 @@ export const MenuItems = [
     icon: "fa-light fa-location-dot",
   },
   {
-    title: "Booking",
-    url: "/BookingPage",
-    cName: "nav-links",
-    icon: "fa-solid fa-calendar-days",
-  },
-  {
     title: "About",
     url: "/AboutUs",
     cName: "nav-links",

@@ -19,7 +19,7 @@ const sport = [
 
 export default function AddVenue() {
   const [Venue_Name, setVenueName] = useState("");
-  const [Venue_Owner, setVenueOwner] = useState("");
+  const [Cost, setCost] = useState("");
   const [City, setVenueLocation] = useState("");
   const [Capacity, setCapacity] = useState("");
   const [Description, setDescription] = useState("");
@@ -30,8 +30,8 @@ export default function AddVenue() {
     try {
       await addDoc(collection(db, "Venues", Venue_Name), {
         Venue_Name,
-        Venue_Owner,
         City,
+        Cost,
         Capacity,
         Description,
         typeofsport,
@@ -50,8 +50,8 @@ export default function AddVenue() {
           <Col md={6} className="mb-3">
             <Form.Control
               type="text"
-              placeholder="Venue Owner Name"
-              onChange={(e) => setVenueOwner(e.target.value)}
+              placeholder="Venue Name"
+              onChange={(e) => setVenueName(e.target.value)}
               required
             />
             <Form.Control.Feedback type="invalid">
@@ -60,9 +60,9 @@ export default function AddVenue() {
           </Col>
           <Col md={6} className="mb-3">
             <Form.Control
-              type="text"
-              placeholder="Venue Name"
-              onChange={(e) => setVenueName(e.target.value)}
+              type="number"
+              placeholder="Cost"
+              onChange={(e) => setCost(e.target.value)}
               required
             />
             <Form.Control.Feedback type="invalid">

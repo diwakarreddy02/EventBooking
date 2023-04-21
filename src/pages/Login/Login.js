@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import GoogleButton from "react-google-button";
 import styles from "./Login.module.css";
 import app from "../../config/firebase";
-
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const provider = new GoogleAuthProvider(app);
@@ -47,6 +48,9 @@ export default function Login() {
   document.body.className = styles.body;
   return (
     <>
+      <div>
+        <Navbar />
+      </div>
       <div className={styles.header}>
         <h1 className={styles.heading}>IU Eventia</h1>
         <h2 className={styles.subHeading}>
@@ -110,6 +114,7 @@ export default function Login() {
           )}
         </Form>
       </div>
+      <Footer />
     </>
   );
 }

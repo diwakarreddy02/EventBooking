@@ -1,65 +1,93 @@
-// import React, { useEffect, useState } from "react";
-// import "./SearchEvents.css";
-// import { db } from "../../config/firebase";
+import React, { useEffect, useState } from "react";
+import NavbarEventSearch from "../../components/NavbarEventSearch/NavbarEventSearch.js";
+import NavbarMain from "../../components/NavbarMain/NavbarMain";
+import { fetchAllEvents } from "../../services/SportService";
+import "./SearchEvents.css";
+import { Button, ListGroup, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Footer from "../../components/Footer";
+export default function SportSearch() {
+  const [allEventData, setAllEventData] = useState([]);
+  const [tempData, setTempData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [displayDetailsonModal, setDisplayDetailsOnModal] = useState({});
+  useEffect(() => {
+    fetchAllEvents()
+      .then((res) => {
+        setAllEventData(res);
+        setTempData(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-// export default function SearchEvents() {
-//   const [query, setquery] = useState("");
-//   const fetchAllEvents = async () => {
-//     const response = db.collection("Events");
-//     const data = await response.get();
-//     data.docs.forEach((item) => {
-//       setquery([...query, item.data()]);
-//     });
-//   };
-//   useEffect(() => {
-//     fetchAllEvents();
-//   }, []);
-//   return (
-//     <div>
-//       {query &&
-//         query.map((element) => {
-//           return (
-//             <div className="container">
-//               <h4>{element.venue}</h4>
-//               <p>{element.city}</p>
-//               <p>{element.sport}</p>
-//             </div>
-//           );
-//         })}
-//     </div>
-//   );
-// }
+  useEffect(() => {}, [allEventData, tempData]);
 
-// import { useState, useEffect } from "react";
-// import firebase from "firebase/app";
-// import "firebase/firestore";
+  const showDetails = (element) => {
+    setDisplayDetailsOnModal(element);
+    setShowModal(true);
+  };
 
-// export default function SearchEvents() {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     const db = firebase.firestore();
-//     db.collection("Events").onSnapshot((snapshot) => {
-//       const items = [];
-//       snapshot.forEach((doc) => {
-//         const data = doc.data();
-//         items.push({ id: doc.id, ...data });
-//       });
-//       setData(items);
-//     });
-//   }, []);
-
-//   return (
-//     <div className="card-container">
-//       {data.map((item) => (
-//         <Card>
-//           key={item.id}
-//           srno={item.srno}
-//           city={item.city}
-//           sport={item.sport}
-//           venue={item.venue}
-//         </Card>
-//       ))}
-//     </div>
-//   );
-// }
+  return (
+    <>
+      <div>
+        <NavbarMain />
+        <NavbarEventSearch
+          tempData={tempData}
+          setAllEventData={setAllEventData}
+        />
+        <div className="justify-content-around d-flex ">
+          <ListGroup className="sportsContainer">
+            {allEventData.length ? (
+              allEventData.map((element, index) => (
+                <ListGroup.Item
+                  className="my-3 d-flex flex-row justify-content-between"
+                  key={index}
+                >
+                  <div>
+                    <h4>{element.Venue_Name}</h4>
+                    <p style={{ color: "grey" }}>{element.City}</p>
+                    <p>{element.Description.substring(0, 70) + "..."}</p>
+                  </div>
+                  <div className="d-flex flex-column justify-content-around">
+                    {" "}
+                    <Button
+                      variant="success"
+                      className="sportsConatinerDetailsButton"
+                      onClick={() => showDetails(element)}
+                    >
+                      View Details
+                    </Button>
+                  </div>
+                </ListGroup.Item>
+              ))
+            ) : (
+              <h3 className="text-center mt-5">No Venues found!</h3>
+            )}
+          </ListGroup>
+        </div>
+        {showModal ? (
+          <Modal show={showModal} onHide={() => setShowModal(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title id="example-custom-modal-styling-title">
+                {displayDetailsonModal.Venue_Name}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p style={{ color: "grey" }}>{displayDetailsonModal.City}</p>
+              <p>{displayDetailsonModal.Description}</p>
+              <p>Cost per individual: {displayDetailsonModal.Cost}</p>
+              <Link to={"/Booking?" + displayDetailsonModal.Venue_Name}>
+                <Button>Book Venue</Button>
+              </Link>
+            </Modal.Body>
+          </Modal>
+        ) : (
+          <></>
+        )}
+      </div>
+      <Footer />
+    </>
+  );
+}
