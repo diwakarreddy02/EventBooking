@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
-import { Button, Container, Row, Col, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./Bookingpage.module.css";
 import { fetchAllVenues } from "../../services/SportService";
@@ -46,15 +45,37 @@ function BookingPage() {
   };
   document.body.className = styles.body;
   return (
-    <Container className="text-center">
-      <h2>{allSportsData.Venue_Name}</h2>
-      <h3 className={styles.heading}>Select date and time</h3>
+    <Container className="d-flex flex-column text-center">
+      <div>
+        <h2>{allSportsData.Venue_Name}</h2>
+
+        <h5>{allSportsData.City}</h5>
+      </div>
+
       <Form onSubmit={handleSubmit}>
-        <Form.Control
-          type="date"
-          min={new Date().toISOString().split("T")[0]}
-          onChange={handleDateChange}
-        />
+        <h3 className={styles.heading}>Select date and time</h3>
+        <div
+          className="d-flex flex-column px-5 my-5"
+          style={{ width: "40%", marginLeft: "23rem" }}
+        >
+          <Form.Group className="d-flex flex-row">
+            <p className="h4 mt-1 col-4">Date:</p>
+            <Form.Control
+              type="date"
+              min={new Date().toISOString().split("T")[0]}
+              onChange={handleDateChange}
+            />
+          </Form.Group>
+          <div className="my-3 d-flex flex-row">
+            <p className="h5 my-2 px-3 col-4">Start Time:</p>
+            <Form.Control type="time" min="00:00" max="23:59" />
+          </div>
+          <div className="d-flex flex-row">
+            <p className="h5 my-2 px-3 col-4">End Time:</p>
+            <Form.Control type="time" min="00:00" max="23:59" />
+          </div>
+        </div>
+
         <Form.Control.Feedback
           type="invalid"
           style={{ display: isInvalidDate ? "block" : "none" }}
@@ -71,7 +92,7 @@ function BookingPage() {
           >
             Book Slot
           </Button>
-          <Link className={styles.link} to="/SportSearch">
+          <Link className={styles.link} to="/thankyou">
             <Button variant="danger" className={styles.cancelBtn}>
               Cancel
             </Button>
