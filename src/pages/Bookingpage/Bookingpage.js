@@ -6,10 +6,11 @@ import styles from "./Bookingpage.module.css";
 import { fetchAllVenues } from "../../services/SportService";
 
 function BookingPage() {
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedStartEndDate, setSelectedStartEndDate] = useState(["", ""]);
   const [isSlotBooked, setIsSlotBooked] = useState(false);
   const [isInvalidDate, setIsInvalidDate] = useState(false);
   const [allSportsData, setAllSportsData] = useState({});
+  const [dateBooking, setDateBooking] = useState("");
 
   useEffect(() => {
     fetchAllVenues()
@@ -26,53 +27,61 @@ function BookingPage() {
         console.log(err);
       });
   }, []);
-  console.log(allSportsData);
-  const handleDateChange = (e) => {
-    setSelectedDate(e.target.value);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (selectedDate === "") {
+    if (selectedStartEndDate[0].length && selectedStartEndDate[1].length) {
       setIsInvalidDate(true);
     } else {
-      const confirmation = `Are you sure you want to book this slot on ${selectedDate}?`;
-      if (window.confirm(confirmation)) {
-        setIsSlotBooked(true);
-        // Add code to book the slot here
-      }
     }
   };
   document.body.className = styles.body;
   return (
-    <Container className="d-flex flex-column text-center">
+    <div className=" d-flex flex-column text-center">
       <div>
         <h2>{allSportsData.Venue_Name}</h2>
 
         <h5>{allSportsData.City}</h5>
       </div>
 
-      <Form onSubmit={handleSubmit}>
-        <h3 className={styles.heading}>Select date and time</h3>
-        <div
-          className="d-flex flex-column px-5 my-5"
-          style={{ width: "40%", marginLeft: "23rem" }}
-        >
+      <Form className={styles.formBookingSlot} onSubmit={handleSubmit}>
+        <h3 className="mt-5">Book your desired slot</h3>
+        <div className="d-flex flex-column px-5 my-5">
           <Form.Group className="d-flex flex-row">
             <p className="h4 mt-1 col-4">Date:</p>
             <Form.Control
               type="date"
               min={new Date().toISOString().split("T")[0]}
-              onChange={handleDateChange}
+              onChange={(e) => setDateBooking(e.target.value)}
             />
           </Form.Group>
           <div className="my-3 d-flex flex-row">
             <p className="h5 my-2 px-3 col-4">Start Time:</p>
-            <Form.Control type="time" min="00:00" max="23:59" />
+            <Form.Control
+              type="time"
+              onChange={(e) =>
+                setSelectedStartEndDate([
+                  e.target.value,
+                  selectedStartEndDate[1],
+                ])
+              }
+              min="00:00"
+              max="23:59"
+            />
           </div>
           <div className="d-flex flex-row">
             <p className="h5 my-2 px-3 col-4">End Time:</p>
-            <Form.Control type="time" min="00:00" max="23:59" />
+            <Form.Control
+              onChange={(e) =>
+                setSelectedStartEndDate([
+                  selectedStartEndDate[0],
+                  e.target.value,
+                ])
+              }
+              type="time"
+              min="00:00"
+              max="23:59"
+            />
           </div>
         </div>
 
@@ -86,23 +95,23 @@ function BookingPage() {
         <div className={styles.buttonContainer}>
           <Button
             type="submit"
-            variant="success"
+            variant="primary"
             disabled={isInvalidDate}
             className={styles.bookBtn}
           >
             Book Slot
           </Button>
           <Link className={styles.link} to="/thankyou">
-            <Button variant="danger" className={styles.cancelBtn}>
+            <Button variant="secondary" className={styles.cancelBtn}>
               Cancel
             </Button>
           </Link>
         </div>
       </Form>
       {isSlotBooked && (
-        <h2 className={styles.slotBooked}>Slot booked on {selectedDate}</h2>
+        <h2 className={styles.slotBooked}>Slot booked on {dateBooking}</h2>
       )}
-    </Container>
+    </div>
   );
 }
 
