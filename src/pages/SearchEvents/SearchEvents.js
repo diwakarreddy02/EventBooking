@@ -46,15 +46,13 @@ export default function SportSearch() {
                   key={index}
                 >
                   <div>
-                    <h4>{element.Venue_Name}</h4>
-                    <p style={{ color: "grey" }}>{element.City}</p>
-                    <p>{element.Description.substring(0, 70) + "..."}</p>
+                    <h4>{element.venue}</h4>
+                    <p style={{ color: "grey" }}>{element.city}</p>
                   </div>
                   <div className="d-flex flex-column justify-content-around">
                     {" "}
                     <Button
                       variant="success"
-                      className="sportsConatinerDetailsButton"
                       onClick={() => showDetails(element)}
                     >
                       View Details
