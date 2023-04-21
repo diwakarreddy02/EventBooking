@@ -24,6 +24,7 @@ export default function Login() {
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
       if (res.user.emailVerified) {
+        localStorage.setItem("email", email);
         navigate("/dashboard");
       } else {
         console.log("Please verify your email.");
@@ -38,6 +39,8 @@ export default function Login() {
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
+        const user = auth.currentUser;
+        localStorage.setItem("email", user.email);
         localStorage.setItem("userToken", token);
         navigate("/dashboard");
       })
