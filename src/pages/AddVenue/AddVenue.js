@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { db } from "../../config/firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import styles from "./AddVenue.module.css";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import InputGroup from "react-bootstrap/InputGroup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const sport = [
   "Baseball",
@@ -23,12 +28,15 @@ export default function AddVenue() {
   const [City, setVenueLocation] = useState("");
   const [Capacity, setCapacity] = useState("");
   const [Description, setDescription] = useState("");
-  const [typeofsport, setSport] = useState(sport[0]);
+  const [typeofsport, setSport] = useState([]);
+  console.log(typeofsport);
+
+  useEffect(() => {}, [typeofsport]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(db, "Venues", Venue_Name), {
+      await addDoc(collection(db, "Venues"), {
         Venue_Name,
         City,
         Cost,
@@ -47,7 +55,7 @@ export default function AddVenue() {
       <h1>Add a Venue</h1>
       <Form className={styles.formContainer} onSubmit={handleSubmit}>
         <Row>
-          <Col md={6} className="mb-3">
+          <Col className="mb-3">
             <Form.Control
               type="text"
               placeholder="Venue Name"
@@ -58,6 +66,8 @@ export default function AddVenue() {
               Please enter a valid name.
             </Form.Control.Feedback>
           </Col>
+        </Row>
+        <Row>
           <Col md={6} className="mb-3">
             <Form.Control
               type="number"
@@ -69,8 +79,6 @@ export default function AddVenue() {
               Please enter a valid name.
             </Form.Control.Feedback>
           </Col>
-        </Row>
-        <Row>
           <Col md={6} className="mb-3">
             <Form.Control
               type="text"
@@ -82,6 +90,8 @@ export default function AddVenue() {
               Please enter a valid city name.
             </Form.Control.Feedback>
           </Col>
+        </Row>
+        <Row>
           <Col md={6} className="mb-3">
             <Form.Control
               type="text"
@@ -89,8 +99,6 @@ export default function AddVenue() {
               onChange={(e) => setDescription(e.target.value)}
             />
           </Col>
-        </Row>
-        <Row>
           <Col md={6} className="mb-3">
             <Form.Control
               type="number"
@@ -98,14 +106,41 @@ export default function AddVenue() {
               onChange={(e) => setCapacity(e.target.value)}
             />
           </Col>
-          <Col md={6} className="mb-3">
-            <Form.Select onChange={(e) => setSport(e.target.value)}>
-              {sport.map((sport, index) => (
-                <option key={index} value={sport}>
-                  {sport}
-                </option>
-              ))}
-            </Form.Select>
+        </Row>
+        <Row>
+          <Col className="mb-3">
+            <InputGroup className="mb-3">
+              <Form.Control disabled value={typeofsport.toString()} />
+              <DropdownButton
+                variant="outline-secondary"
+                title="Select Sport to Add"
+                align="end"
+              >
+                {sport.map((sport, index) =>
+                  typeofsport.indexOf(sport) === -1 ? (
+                    <Dropdown.Item
+                      key={index}
+                      onClick={() => setSport([...typeofsport, sport])}
+                      value={sport}
+                    >
+                      {sport}
+                    </Dropdown.Item>
+                  ) : (
+                    <></>
+                  )
+                )}
+              </DropdownButton>
+              {typeofsport.length ? (
+                <Button>
+                  <FontAwesomeIcon
+                    onClick={() => setSport(typeofsport.slice(0, -1))}
+                    icon={faTrash}
+                  />
+                </Button>
+              ) : (
+                <></>
+              )}
+            </InputGroup>
           </Col>
         </Row>
         <Button variant="primary" type="submit">
