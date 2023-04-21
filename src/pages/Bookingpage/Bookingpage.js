@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "react-datetime/css/react-datetime.css";
-import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Bookingpage.module.css";
 import { fetchAllVenues } from "../../services/SportService";
+import {
+  updateDoc,
+  query,
+  getDocs,
+  where,
+  collection,
+  doc,
+} from "firebase/firestore";
+import { db } from "../../config/firebase";
+import Alert from "react-bootstrap/Alert";
 
 function BookingPage() {
   const [selectedStartEndDate, setSelectedStartEndDate] = useState(["", ""]);
@@ -11,6 +21,13 @@ function BookingPage() {
   const [isInvalidDate, setIsInvalidDate] = useState(false);
   const [allSportsData, setAllSportsData] = useState({});
   const [dateBooking, setDateBooking] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
+
+  const userEmail = localStorage.getItem("email");
+  useEffect(() => {
+    setIsInvalidDate(false);
+  }, [dateBooking, selectedStartEndDate]);
 
   useEffect(() => {
     fetchAllVenues()
@@ -28,16 +45,35 @@ function BookingPage() {
       });
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (selectedStartEndDate[0].length && selectedStartEndDate[1].length) {
+    console.log(8);
+    if (!selectedStartEndDate[0].length && !selectedStartEndDate[1].length) {
       setIsInvalidDate(true);
     } else {
+      console.log(7);
+      const userRef = await query(
+        collection(db, "Users"),
+        where("email", "==", userEmail)
+      );
+      const querySnapshot = await getDocs(userRef);
+      querySnapshot.forEach(async (userDoc) => {
+        const tempDoc = doc(db, "Users", userDoc.id);
+        await updateDoc(tempDoc, {
+          reservation: [
+            allSportsData.Venue_Name,
+            dateBooking,
+            ...selectedStartEndDate,
+          ],
+        })
+          .then((res) => setShowAlert(true))
+          .catch((err) => console.log(err));
+      });
     }
   };
   document.body.className = styles.body;
   return (
-    <div className=" d-flex flex-column text-center">
+    <div className="d-flex flex-column text-center">
       <div>
         <h2>{allSportsData.Venue_Name}</h2>
 
@@ -93,12 +129,7 @@ function BookingPage() {
           Please select a valid date and time.
         </Form.Control.Feedback>
         <div className={styles.buttonContainer}>
-          <Button
-            type="submit"
-            variant="primary"
-            disabled={isInvalidDate}
-            className={styles.bookBtn}
-          >
+          <Button type="submit" variant="primary" className={styles.bookBtn}>
             Book Slot
           </Button>
           <Link className={styles.link} to="/thankyou">
@@ -108,8 +139,17 @@ function BookingPage() {
           </Link>
         </div>
       </Form>
-      {isSlotBooked && (
-        <h2 className={styles.slotBooked}>Slot booked on {dateBooking}</h2>
+      {showAlert ? (
+        <Alert
+          className="m-5"
+          dismissible
+          onClose={() => navigate("/SportSearch")}
+          variant="success"
+        >
+          The Slot is booked for {dateBooking} !
+        </Alert>
+      ) : (
+        <></>
       )}
     </div>
   );
