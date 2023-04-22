@@ -99,18 +99,26 @@ export default function NavbarMain() {
               </Nav.Link>
             ))}
             {username && (
-      <Dropdown>
-        <Dropdown.Toggle variant="link" id="dropdown-basic">
-          {username}
-        </Dropdown.Toggle>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="link"
+                  className="mt-1"
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    fontSize: "0.8em",
+                  }}
+                >
+                  {username}
+                </Dropdown.Toggle>
 
-        <Dropdown.Menu>
-          <Dropdown.Item href="/UserDetails">Profile</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-              )}
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/UserDetails">Profile</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
