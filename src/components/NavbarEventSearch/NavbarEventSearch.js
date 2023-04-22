@@ -3,12 +3,12 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-export default function NavbarEventSearch({ tempData, setAllEventData }) {
+export default function NavbarSportSearch({ tempData, setAllEventData }) {
   const setdataSearch = (searchValue) => {
     setAllEventData(
       tempData.filter(
         (element) =>
-          element.typeofsport.filter(
+          element.EventName.filter(
             (dataEach) =>
               dataEach.toLowerCase().indexOf(searchValue.toLowerCase()) > -1
           ).length
@@ -22,7 +22,7 @@ export default function NavbarEventSearch({ tempData, setAllEventData }) {
     } else {
       setAllEventData(
         tempData.filter(
-          (element) => element.city.toLowerCase() === cityValue.toLowerCase()
+          (element) => element.City.toLowerCase() === cityValue.toLowerCase()
         )
       );
     }
@@ -42,14 +42,10 @@ export default function NavbarEventSearch({ tempData, setAllEventData }) {
         <Navbar bg="light" expand="lg">
           <Container>
             <Nav>
-              <Navbar.Brand href="/Dashboard"> IU Eventia </Navbar.Brand>
-            </Nav>
-
-            <Nav>
               <Form className="d-flex">
                 <Form.Control
                   type="search"
-                  placeholder="Search Events/Activities..."
+                  placeholder="Search sports..."
                   className="ms-5 pe-5"
                   style={{ width: "26rem" }}
                   aria-label="Search"
