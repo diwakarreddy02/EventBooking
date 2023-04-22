@@ -109,7 +109,7 @@ export default function NavbarMain() {
             <Nav className="me-auto"></Nav>
             <Nav>
               {navbarItems.map((element, index) => (
-                <Nav.Link key={index} href={"/" + element}>
+                <Nav.Link key={index} href={"/" + element} style={{color:"white"}}>
                   {element}
                 </Nav.Link>
               ))}
@@ -120,7 +120,7 @@ export default function NavbarMain() {
                     className="mt-1"
                     style={{
                       textDecoration: "none",
-                      color: "black",
+                      color: "white",
                       fontSize: "0.8em",
                     }}
                   >
@@ -139,7 +139,6 @@ export default function NavbarMain() {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <hr style={{ marginInline: "20%" }} />
       </div>
       {ProfileModalShow ? (
         <Modal
