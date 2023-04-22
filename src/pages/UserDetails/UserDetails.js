@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
-
+import Sidebar from '../../components/Sidebar';
+import './UserDetails.css';
 
 function UserDetails() {
   const [userDetails, setUserDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showDetails, setShowDetails] = useState(false);
+  const [selectedPage, setSelectedPage] = useState(null);
   const auth = getAuth();
 
   useEffect(() => {
@@ -29,38 +30,51 @@ function UserDetails() {
     return () => unsubscribe();
   }, [auth]);
 
-  
-  const [show, setShow] = useState(false);
-
-  
   const handleProfileClick = () => {
-      setShowDetails(true);
-    
+    setSelectedPage(null);
   };
+
+  const handlePageClick = (page) => {
+    setSelectedPage(page);
+  };
+
+  const pages = [
+    { name: 'Dashboard' },
+    { name: 'Profile' },
+  ];
+
   return (
     <div>
-      <h1>User Details</h1>
-      {isLoading ? (
-        <p>Loading user details...</p>
-      ) : userDetails ? (
-        <div>
-          <p>
-            <strong>Name:</strong> {userDetails.firstName} {userDetails.lastName}
-          </p>
-          <p>
-            <strong>Email:</strong> {userDetails.email}
-          </p>
-          <p>
-            <strong>Role:</strong> {userDetails.role}
-          </p>
-          <p>
-            <strong>Username:</strong> {userDetails.username}
-          </p>
+      <Sidebar pages={pages} onProfileClick={handleProfileClick} onPageClick={handlePageClick} />
+      <div style={{ marginLeft: '200px' }}>
+        <h1>User Details</h1>
+        {isLoading ? (
+          <p>Loading user details...</p>
+        ) : userDetails ? (
+          <div>
+            <p>
+              <strong>Name:</strong> {userDetails.firstName} {userDetails.lastName}
+            </p>
+            <p>
+              <strong>Email:</strong> {userDetails.email}
+            </p>
+            <p>
+              <strong>Role:</strong> {userDetails.role}
+            </p>
+            <p>
+              <strong>Username:</strong> {userDetails.username}
+            </p>
+          </div>
+        ) : (
+          <p>No user details available</p>
+        )}
+      </div>
+      {selectedPage && (
+        <div style={{ position: 'absolute', top: 0, left: '200px', right: 0, bottom: 0 }}>
+          {selectedPage.name === 'Dashboard' ? <h2>Dashboard</h2> : <h2>Profile</h2>}
         </div>
-      ) : (
-        <p>No user details available</p>
       )}
-        </div>    
+    </div>
   );
 }
 
