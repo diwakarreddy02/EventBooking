@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import GoogleButton from "react-google-button";
 import styles from "./Login.module.css";
@@ -22,13 +22,18 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
-      if (res.user.emailVerified) {
-        localStorage.setItem("email", email);
-        navigate("/dashboard");
+      if (passwordReset) {
+        await sendPasswordResetEmail(auth, email);
+        console.log("Password reset email sent");
+        setPasswordReset(false);
       } else {
-        console.log("Please verify your email.");
-      }
+        const res = await signInWithEmailAndPassword(auth, email, password);
+        if (res.user.emailVerified) {
+          localStorage.setItem("email", email);
+          navigate("/dashboard");
+        } else {
+          console.log("Please verify your email.");
+        }}
     } catch (error) {
       console.log(error);
     }

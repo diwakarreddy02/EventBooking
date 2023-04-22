@@ -20,7 +20,7 @@ export default function NavbarMain() {
   const [navbarItems, setNavbarItems] = useState(
     localStorage.getItem("navbarItems")
       ? JSON.parse(localStorage.getItem("navbarItems"))
-      : ["Events", "Search", "Contact", "Calendar", "AddEvent"]
+      : ["Events", "Search", "Contact", "Calendar"]
   );
 
   const [ProfileModalShow, setProfileModalShow] = useState(false);
@@ -60,16 +60,16 @@ export default function NavbarMain() {
         if (docSnap.exists()) {
           if (docSnap.data().role === "Owner") {
             if (!navbarItems.includes("AddVenue")) {
-              setNavbarItems([...navbarItems, "AddVenue"]);
+              setNavbarItems([...navbarItems, "AddVenue", "AddEvent"]);
               localStorage.setItem(
                 "navbarItems",
-                JSON.stringify([...navbarItems, "AddVenue"])
+                JSON.stringify([...navbarItems, "AddVenue", "AddEvent"])
               );
             }
           } else {
             if (navbarItems.includes("AddVenue")) {
               const updatedNavbarItems = navbarItems.filter(
-                (item) => item !== "AddVenue"
+                (item) => item !== "AddVenue" && item !== "AddEvent"
               );
               setNavbarItems(updatedNavbarItems);
               localStorage.setItem(
@@ -113,7 +113,7 @@ export default function NavbarMain() {
                   {element}
                 </Nav.Link>
               ))}
-              {username && (
+              {auth.currentUser && (
                 <Dropdown>
                   <Dropdown.Toggle
                     variant="link"
