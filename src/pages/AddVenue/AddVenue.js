@@ -74,6 +74,7 @@ export default function AddVenue() {
             <Form.Control
               type="number"
               placeholder="Cost"
+              min={0}
               onChange={(e) => setCost(e.target.value)}
               required
             />
@@ -105,6 +106,7 @@ export default function AddVenue() {
             <Form.Control
               type="number"
               placeholder="Capacity"
+              min={1}
               onChange={(e) => setCapacity(e.target.value)}
             />
           </Col>

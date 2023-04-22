@@ -64,6 +64,7 @@ export default function AddEvent() {
               type="number"
               placeholder="Cost"
               onChange={(e) => setCost(e.target.value)}
+              min={0}
               required
             />
             <Form.Control.Feedback type="invalid">
@@ -95,6 +96,7 @@ export default function AddEvent() {
               type="number"
               placeholder="Capacity"
               onChange={(e) => setCapacity(e.target.value)}
+              min={1}
             />
           </Col>
         </Row>
