@@ -12,6 +12,7 @@ import AddVenue from "./pages/AddVenue/AddVenue";
 import AddEvent from "./pages/AddEvent/AddEvent";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import Calendars from "./pages/Calendars/Calendars";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Search" element={<SportSearch />} />
         <Route path="/ContactUs" element={<ContactForm />} />
         <Route path="/Contact" element={<ContactForm />} />
+        <Route path="/Calendars" element={<Calendars />} />
         <Route path="/Events" element={<SearchEvents />} />
         <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/Booking" element={<BookingPage />} />
