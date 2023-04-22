@@ -38,6 +38,7 @@ export default function Register() {
         email: email,
         role: role,
         username: username,
+        reservation: [],
       });
       navigate("/login");
     } catch (err) {

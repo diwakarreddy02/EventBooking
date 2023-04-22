@@ -6,7 +6,7 @@ import "./SearchEvents.css";
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
-export default function SportSearch() {
+export default function SearchEvents() {
   const [allEventData, setAllEventData] = useState([]);
   const [tempData, setTempData] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -46,15 +46,15 @@ export default function SportSearch() {
                   key={index}
                 >
                   <div>
-                    <h4>{element.Venue_Name}</h4>
-                    <p style={{ color: "grey" }}>{element.City}</p>
-                    <p>{element.Description.substring(0, 70) + "..."}</p>
+                    <h4>{element.EventName}</h4>
+                    <p>{element.City}</p>
+                    <p>{element.Cost}</p>
+                    <p>{element.Description}</p>
                   </div>
                   <div className="d-flex flex-column justify-content-around">
                     {" "}
                     <Button
                       variant="success"
-                      className="sportsConatinerDetailsButton"
                       onClick={() => showDetails(element)}
                     >
                       View Details
@@ -63,7 +63,7 @@ export default function SportSearch() {
                 </ListGroup.Item>
               ))
             ) : (
-              <h3 className="text-center mt-5">No Venues found!</h3>
+              <h3 className="text-center mt-5">No Events found!</h3>
             )}
           </ListGroup>
         </div>
@@ -71,15 +71,15 @@ export default function SportSearch() {
           <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
               <Modal.Title id="example-custom-modal-styling-title">
-                {displayDetailsonModal.Venue_Name}
+                {displayDetailsonModal.EventName}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <p style={{ color: "grey" }}>{displayDetailsonModal.City}</p>
               <p>{displayDetailsonModal.Description}</p>
               <p>Cost per individual: {displayDetailsonModal.Cost}</p>
-              <Link to={"/Booking?" + displayDetailsonModal.Venue_Name}>
-                <Button>Book Venue</Button>
+              <Link to={"/Booking?" + displayDetailsonModal.EventName}>
+                <Button>Book Event</Button>
               </Link>
             </Modal.Body>
           </Modal>
