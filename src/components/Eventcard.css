@@ -43,8 +43,24 @@
 .e-card h4 {
     font-size: 1.3rem;
     padding: .9rem 0 .2rem 0;
+    margin-left: 3%;
 }
 
+.e-card p {
+    margin-left: 3%;
+}
+
+.e-card button {
+    background-color: rgba(0, 0, 0, 1);
+    color:white;
+    border-radius: 5px;
+    margin-left:12px;
+    margin-bottom:5px;
+}
+
+.e-card button:hover {
+    background-color: grey;
+}
 
 
 @media screen and (max-width: 850px) {

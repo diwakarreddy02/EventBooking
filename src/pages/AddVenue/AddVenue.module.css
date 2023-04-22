@@ -1,6 +1,7 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
+  padding-top: 2%;
 }
 /* .body {
     background-image: url('../../assets/Venue.jpeg');
@@ -55,7 +56,7 @@ h1 {
 }
 
 .btn-primary {
-  background-color: #00b4ff;
+  background-color: black;
   border: none;
   border-radius: 30px;
   padding: 10px 30px;
@@ -66,5 +67,5 @@ h1 {
 }
 
 .btn-primary:hover {
-  background-color: #0095e0;
+  background-color: grey;
 }

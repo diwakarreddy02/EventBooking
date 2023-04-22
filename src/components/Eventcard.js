@@ -6,7 +6,7 @@ import Eventcarddata from "./Eventcarddata";
 function Eventcard() {
     return(
         <div className="eventcard">
-            <h1>Some of the Events</h1>
+            <h1>Other Events</h1>
         
         <div className="eventcardinfo">
             <Eventcarddata 

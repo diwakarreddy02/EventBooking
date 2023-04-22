@@ -18,7 +18,7 @@ export const MenuItems = [
     icon: "fa-solid fa-magnifying-glass",
   },
   {
-    title: "AddVenue",
+    title: "Add Venue",
     url: "/AddVenue",
     cName: "nav-links",
     icon: "fa-light fa-location-dot",

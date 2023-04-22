@@ -88,6 +88,7 @@ h1 {
 .heading {
   font-size: 36px;
   margin-bottom: 20px;
+  margin-top: 2%;
 }
 
 .datetime {
@@ -112,10 +113,11 @@ h1 {
   font-size: 20px;
   margin-right: 20px;
   transition: all 0.3s ease-in-out;
+  background-color: black;
 }
 
 .bookBtn:hover {
-  background-color: #28a745;
+  background-color: grey;
   color: #fff;
 }
 
@@ -123,12 +125,13 @@ h1 {
   width: 200px;
   height: 50px;
   font-size: 20px;
-  background-color: #dc3545;
+  background-color: black;
   transition: all 0.3s ease-in-out;
+  border:black;
 }
 
 .cancelBtn:hover {
-  background-color: #c82333;
+  background-color: grey;
   color: #fff;
 }
 

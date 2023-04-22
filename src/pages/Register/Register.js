@@ -50,11 +50,11 @@ export default function Register() {
   return (
     <>
       <div className={styles.header}>
-        <h1 className={styles.title}>Welcome to IU Eventia</h1>
-        <h2 className={styles.subtitle}>Registration</h2>
+        <h1 className={styles.title}>Welcome to Eventia</h1>
+        <h2 className={styles.subtitle}>Sign Up</h2>
       </div>
       <div
-        style={{ marginTop: "10%" }}
+        style={{ marginTop: "2%" },{backgroundColor: "whitesmoke"}}
         className="col-12 d-flex justify-content-around"
       >
         <Form

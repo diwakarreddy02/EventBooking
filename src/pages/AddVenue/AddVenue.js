@@ -44,7 +44,7 @@ export default function AddVenue() {
   document.body.className = styles.body;
   return (
     <div className={styles.container}>
-      <h1>Add a Venue</h1>
+      <h1>Add Venue</h1>
       <Form className={styles.formContainer} onSubmit={handleSubmit}>
         <Row>
           <Col md={6} className="mb-3">
@@ -108,7 +108,7 @@ export default function AddVenue() {
             </Form.Select>
           </Col>
         </Row>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" style={{ backgroundColor:"black",border:"black"}}>
           Add Venue
         </Button>
       </Form>

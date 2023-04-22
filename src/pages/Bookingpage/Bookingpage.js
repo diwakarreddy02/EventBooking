@@ -53,10 +53,10 @@ function BookingPage() {
       </div>
 
       <Form onSubmit={handleSubmit}>
-        <h3 className={styles.heading}>Select date and time</h3>
-        <div
+        <h3 className={styles.heading}>Select Date and Time</h3>
+        <div 
           className="d-flex flex-column px-5 my-5"
-          style={{ width: "40%", marginLeft: "23rem" }}
+          style={{ width: "40%", marginLeft: "23rem", margin: "0 auto"}}
         >
           <Form.Group className="d-flex flex-row">
             <p className="h4 mt-1 col-4">Date:</p>
@@ -67,11 +67,11 @@ function BookingPage() {
             />
           </Form.Group>
           <div className="my-3 d-flex flex-row">
-            <p className="h5 my-2 px-3 col-4">Start Time:</p>
+            <p className="h4 my-2 px-3 col-5">Start Time:</p>
             <Form.Control type="time" min="00:00" max="23:59" />
           </div>
           <div className="d-flex flex-row">
-            <p className="h5 my-2 px-3 col-4">End Time:</p>
+            <p className="h4 my-2 px-3 col-5">End Time:</p>
             <Form.Control type="time" min="00:00" max="23:59" />
           </div>
         </div>

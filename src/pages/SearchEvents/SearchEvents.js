@@ -31,7 +31,7 @@ export default function SportSearch() {
 
   return (
     <>
-      <div>
+      <div> 
         <NavbarMain />
         <NavbarEventSearch
           tempData={tempData}

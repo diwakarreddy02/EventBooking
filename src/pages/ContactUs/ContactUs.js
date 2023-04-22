@@ -22,7 +22,7 @@ const ContactForm = () => {
   return (
     <>
       <NavbarMain />
-      <div className="container mt-5">
+      <div className="container mt-3">
         <h2 className="mb-3">Contact Us</h2>
         <form onSubmit={onSubmit}>
           <div className="mb-3">
@@ -41,13 +41,13 @@ const ContactForm = () => {
             <label className="form-label" htmlFor="message">
               Message:
             </label>
-            <textarea className="form-control" id="message" rows="5" required />
+            <textarea className="form-control" id="message" rows="3" required />
           </div>
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-primary" type="submit" style={{backgroundColor:"black",border:"black"}}>
             {formStatus}
           </button>
         </form>
-        <div className="contact-info">
+        <div className="contact-info" style={{marginTop:"1rem"}}>
           <h4>Contact Information</h4>
           <p>
             If you have any questions or enquiries, please feel free to contact

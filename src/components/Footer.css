@@ -7,6 +7,12 @@
   color: white;
   text-align: center;
   position: relative;
+  padding-bottom: 2%;
+}
+
+.footer h1{
+  padding-top: 2%;
+  font-family: Georgia;
 }
 
 .top {
@@ -30,7 +36,7 @@
 }
 
 .bottom {
-  padding: 2rem;
+  margin: 0 1% 0 1%;
   text-align: start;
   display: flex;
   justify-content: space-between;
@@ -40,6 +46,7 @@
 .bottom div {
   display: flex;
   flex-direction: column;
+  padding-bottom: 2%;
 }
 
 .bottom h4 {

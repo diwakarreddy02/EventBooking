@@ -5,6 +5,7 @@ import "./NavbarMain.css";
 import { db } from "../../config/firebase";
 import { getDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getScrollGridClassNames } from "@fullcalendar/core/internal";
 
 export default function NavbarMain() {
   const auth = getAuth();
@@ -48,22 +49,22 @@ export default function NavbarMain() {
   return (
     <div>
       <Navbar className="NavbarContainer" collapseOnSelect expand="lg">
-        <Navbar.Brand href="/Dashboard">
-          <p className="NavbarHeading pt-3">IU Eventia</p>
+        <Navbar.Brand href="/Dashboard" > 
+          <p className="NavbarHeading pt-3" style={{}}>Eventia</p>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav>
             {navbarItems.map((element, index) => (
-              <Nav.Link key={index} href={"/" + element}>
+              <Nav.Link key={index} href={"/" + element} style={{color:"white"}}>
                 {element}
               </Nav.Link>
             ))}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <hr style={{ marginInline: "20%" }} />
+      {/* <hr style={{ marginInline: "10%" }} /> */}
     </div>
   );
 }

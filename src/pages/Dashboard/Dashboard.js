@@ -27,11 +27,11 @@ export default function Dashboard() {
   return (
     <>
       <NavbarMain />
-      <div className={styles.dashboardContent}>
-        <h2 className={styles.heading}>Welcome to IU Eventia !!!</h2>
+      <div className={styles.dashboardContent} style={{backgroundColor:"whitesmoke"}}>
+        <h2 className={styles.heading}>Welcome to Eventia !!!</h2>
       </div>
       <div className="d-flex justify-content-around">
-        <Form className="col-3">
+        <Form className="col-4">
           <Form.Control
             type="search"
             onChange={(e) => setSearch(e.target.value)}

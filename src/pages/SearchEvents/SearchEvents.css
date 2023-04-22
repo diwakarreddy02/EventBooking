@@ -1,3 +1,6 @@
+body {
+  background-color: whitesmoke;
+}
 .card {
   width: calc(25% - 10px);
   margin-bottom: 20px;

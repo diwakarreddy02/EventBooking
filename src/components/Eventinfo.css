@@ -15,8 +15,9 @@
 
 .event-text {
     width: 45%;
-    text-align: start;
-    font-size: 1.1rem;
+    text-align:justify;
+    font-size: 1.2rem;
+    margin-left: 10;
 }
 
 .event-text h2 {
@@ -29,6 +30,7 @@
     display: flex;
     justify-content: space-between;
     z-index: -99;
+    border-radius: 0.5;
 }
 
 .image img {
@@ -37,6 +39,7 @@
     object-fit: cover;
     border-radius: 6px;
     box-shadow: -1px 1px 62px -18px rgba(0, 0, 0, 0.19);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 

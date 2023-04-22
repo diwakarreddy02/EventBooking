@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="top">
                 <div>
                     <h1>Eventia</h1>
-                    <p>Book for a event now</p>
+                    {/* <p>Book for a event now</p> */}
                 </div>
                 <div>
                     <a href="/">

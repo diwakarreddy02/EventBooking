@@ -55,7 +55,7 @@ export default function Login() {
         <Navbar />
       </div>
       <div className={styles.header}>
-        <h1 className={styles.heading}>IU Eventia</h1>
+        {/* <h1 className={styles.heading}>IU Eventia</h1> */}
         <h2 className={styles.subHeading}>
           Events and Venue booking made easy
         </h2>
@@ -63,7 +63,7 @@ export default function Login() {
       <div className={`d-flex justify-content-around ${styles.formContainer}`}>
         <Form className={styles.form} onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label className={styles.label}>Email address</Form.Label>
+            <Form.Label className={styles.label}>Email Address</Form.Label>
             <Form.Control
               className={styles.input}
               type="email"
@@ -74,7 +74,7 @@ export default function Login() {
           {!passwordReset && (
             <Form.Group controlId="formBasicPassword">
               <Form.Label className={styles.label}>Password</Form.Label>
-              <Form.Control
+              <Form.Control 
                 className={styles.input}
                 type="password"
                 placeholder="Password"
@@ -109,7 +109,7 @@ export default function Login() {
           </div>
           {!passwordReset && (
             <div className={styles.googleButtonContainer}>
-              <GoogleButton
+              <GoogleButton style={{ backgroundColor: 'black' }}
                 className={styles.googleButton}
                 onClick={() => singInwithGoogle()}
               />

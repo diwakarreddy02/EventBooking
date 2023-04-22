@@ -38,16 +38,16 @@ export default function NavbarSportSearch({ tempData, setAllSportsData }) {
   };
   return (
     <>
-      <div>
-        <Navbar bg="light" expand="lg">
-          <Container>
-            <Nav>
+      <div >
+        <Navbar bg="whitesmoke" expand="lg" style={{ paddingTop: "2rem" }}>
+          <Container >
+            <Nav >
               <Form className="d-flex">
-                <Form.Control
+                <Form.Control  
                   type="search"
                   placeholder="Search sports..."
-                  className="ms-5 pe-5"
-                  style={{ width: "26rem" }}
+                  className="pe-5"
+                  style={{ width: "26rem", marginLeft: "0rem"}}
                   aria-label="Search"
                   onChange={(e) => setdataSearch(e.target.value)}
                 />

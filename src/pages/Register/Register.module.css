@@ -1,19 +1,28 @@
+.body {
+  background-color: whitesmoke;
+}
+
 .header {
   text-align: center;
-  margin-bottom: 50px;
+  background-color: black;
+  color:white;
+  padding-top: 1%;
+  padding-bottom: 0.04%;
 }
 
 .title {
-  font-size: 36px;
+  font-size: 34px;
+  font-family: Georgia;
   font-weight: bold;
-  color: blue;
-  margin-bottom: 10px;
+  color: white;
 }
 
 .subtitle {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 1%;
+  color: white;
+  font-family: Georgia;
 }
 
 .formContainerReg {
@@ -21,8 +30,9 @@
   margin: 0 auto;
   padding: 20px;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: white;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 1%;
 }
 
 .label {
@@ -35,26 +45,26 @@
   font-size: 16px;
   border-radius: 5px;
   border: none;
-  background-color: #f7f7f7;
+  background-color: white;
   margin-bottom: 20px;
 }
 
 .input {
-  padding: 10px;
+  padding: 10px 10px 5px 15px;
   font-size: 16px;
   border-radius: 5px;
   border: none;
-  background-color: #f7f7f7;
+  background-color: white;
   margin-bottom: 20px;
 }
 
 .input:focus {
-  outline: none;
+  outline: black;
   box-shadow: 0 0 5px #a0d2eb;
 }
 
 .button {
-  background-color: #4caf50;
+  background-color: black;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -65,7 +75,9 @@
 }
 
 .button:hover {
-  background-color: #3e8e41;
+  background-color: grey;
+  color: black;
+  font-weight: bold;
 }
 
 .col6 {
@@ -91,11 +103,12 @@
 }
 
 .link {
-  color: #4caf50;
+  color: black;
   font-weight: bold;
   text-decoration: none;
 }
 
 .link:hover {
   text-decoration: underline;
+  color:grey
 }

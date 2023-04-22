@@ -28,9 +28,10 @@
 
 .navbar-logo {
   color: #222;
-  font-size: 2rem;
+  font-size: 2.5rem;
   cursor: pointer;
   padding-top: 30px;
+  font-family: Georgia;
 }
 
 .nav-menu {
@@ -39,16 +40,17 @@
   grid-gap: 5px;
   list-style: none;
   align-items: center;
-  padding-top: 17px;
+  padding: 17px 0 0 17px;
 }
 
 .nav-links {
   text-decoration: none;
   color: #222;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
   padding: 0.7rem 1rem;
   white-space: nowrap;
+  font-family: Georgia;
   /* display: inline-block;  */
 }
 
@@ -59,12 +61,12 @@
 .nav-links:hover {
   /* height: 100px;
     width: 150px; */
-  background-color: #01959a;
+  background-color: whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  border-radius: 4px;
+  color: #000;
+  border-radius: 5px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
@@ -76,19 +78,20 @@
 button {
   padding: 0.5rem 1rem;
   white-space: nowrap;
-  border-radius: 0.3rem;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 500;
   border: none;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
+  font-family: Georgia;
+  background-color: #fff;
 }
 
 button:hover {
   /* height: 100px;
    width: 150px; */
-  background-color: #151516;
-  color: #fff;
+  background-color: whitesmoke;
+  color: #000;
 }
 
 .menu-icons {
