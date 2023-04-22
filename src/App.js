@@ -12,6 +12,8 @@ import AddVenue from "./pages/AddVenue/AddVenue";
 import AddEvent from "./pages/AddEvent/AddEvent";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import UserDetails from "./pages/UserDetails/UserDetails";
+
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
         <Route path="/Events" element={<SearchEvents />} />
         <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/Booking" element={<BookingPage />} />
+        <Route path="/UserDetails" element={<UserDetails />} />
         <Route path="/AddVenue" element={<AddVenue />} />
         <Route path="/AddEvent" element={<AddEvent />} />
         <Route path="/" element={<HomePage />} />
