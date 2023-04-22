@@ -84,11 +84,6 @@ export default function Dashboard() {
           </Carousel.Item>
         </Carousel>
       </div>
-      <div className={styles.logoutButtonContainer}>
-        <button className={styles.logoutButton} onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
       <Footer />
     </>
   );
