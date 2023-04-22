@@ -43,7 +43,7 @@ export default function AddEvent() {
   document.body.className = styles.body;
   return (
     <div className={styles.container}>
-      <h1 >Add a Event</h1>
+      <h1>Add a Event</h1>
       <Form className={styles.formContainer} onSubmit={handleSubmit}>
         <Row>
           <Col className="mb-3">

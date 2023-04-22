@@ -4,12 +4,12 @@ import Navbar from "react-bootstrap/Navbar";
 import "./NavbarMain.css";
 import { db } from "../../config/firebase";
 import { getDoc, doc } from "firebase/firestore";
-import { getScrollGridClassNames } from "@fullcalendar/core/internal";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import Dropdown from "react-bootstrap/Dropdown";
-import { useLocation } from "react-router-dom";
-import { faWindowMaximize } from "@fortawesome/free-solid-svg-icons";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { useLocation } from "react-router";
 
 export default function NavbarMain() {
   const [, updateState] = React.useState();
@@ -20,10 +20,23 @@ export default function NavbarMain() {
   const [navbarItems, setNavbarItems] = useState(
     localStorage.getItem("navbarItems")
       ? JSON.parse(localStorage.getItem("navbarItems"))
-      : ["Events", "Search", "Contact", "AddEvent"]
+      : ["Events", "Search", "Contact", "Calendar"]
   );
 
+  const [ProfileModalShow, setProfileModalShow] = useState(false);
   const [pathChanged, setPathChanged] = useState(false);
+  const [userDetails, setUserDetails] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      const docRef = doc(db, "Users", user.uid);
+      getDoc(docRef).then((docSnap) => {
+        if (docSnap.exists()) {
+          setUserDetails(docSnap.data());
+        }
+      });
+    });
+  }, [ProfileModalShow]);
 
   useEffect(() => {
     setPathChanged(!pathChanged);
@@ -47,16 +60,16 @@ export default function NavbarMain() {
         if (docSnap.exists()) {
           if (docSnap.data().role === "Owner") {
             if (!navbarItems.includes("AddVenue")) {
-              setNavbarItems([...navbarItems, "AddVenue"]);
+              setNavbarItems([...navbarItems, "AddVenue", "AddEvent"]);
               localStorage.setItem(
                 "navbarItems",
-                JSON.stringify([...navbarItems, "AddVenue"])
+                JSON.stringify([...navbarItems, "AddVenue", "AddEvent"])
               );
             }
           } else {
             if (navbarItems.includes("AddVenue")) {
               const updatedNavbarItems = navbarItems.filter(
-                (item) => item !== "AddVenue"
+                (item) => item !== "AddVenue" && item !== "AddEvent"
               );
               setNavbarItems(updatedNavbarItems);
               localStorage.setItem(
@@ -85,37 +98,86 @@ export default function NavbarMain() {
   };
 
   return (
-    <div>
-      <Navbar className="NavbarContainer" collapseOnSelect expand="lg">
-        <Navbar.Brand href="/Dashboard" > 
-          <p className="NavbarHeading pt-3" style={{}}>Eventia</p>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto"></Nav>
-          <Nav>
-            {navbarItems.map((element, index) => (
-              <Nav.Link key={index} href={"/" + element} style={{color:"white"}}>
-                {element}
-              </Nav.Link>
-            ))}
-            {username && (
-      <Dropdown>
-        <Dropdown.Toggle variant="link" id="dropdown-basic">
-          {username}
-        </Dropdown.Toggle>
+    <>
+      <div>
+        <Navbar className="NavbarContainer" collapseOnSelect expand="lg">
+          <Navbar.Brand href="/Dashboard">
+            <p className="NavbarHeading pt-3">IU Eventia</p>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto"></Nav>
+            <Nav>
+              {navbarItems.map((element, index) => (
+                <Nav.Link key={index} href={"/" + element}>
+                  {element}
+                </Nav.Link>
+              ))}
+              {auth.currentUser && (
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="link"
+                    className="mt-1"
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                      fontSize: "0.8em",
+                    }}
+                  >
+                    {username}
+                  </Dropdown.Toggle>
 
-        <Dropdown.Menu>
-          <Dropdown.Item href="/UserDetails">Profile</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => setProfileModalShow(true)}>
+                      Profile
+                    </Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               )}
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-      {/* <hr style={{ marginInline: "10%" }} /> */}
-    </div>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <hr style={{ marginInline: "20%" }} />
+      </div>
+      {ProfileModalShow ? (
+        <Modal
+          show={ProfileModalShow}
+          onHide={() => setProfileModalShow(false)}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>User Details</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div>
+              <p>
+                <strong>Name:</strong> {userDetails.firstName}{" "}
+                {userDetails.lastName}
+              </p>
+              <p>
+                <strong>Email:</strong> {userDetails.email}
+              </p>
+              <p>
+                <strong>Role:</strong> {userDetails.role}
+              </p>
+              <p>
+                <strong>Username:</strong> {userDetails.username}
+              </p>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setProfileModalShow(false)}
+            >
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      ) : (
+        <></>
+      )}
+    </>
   );
 }

@@ -45,7 +45,7 @@ export default function NavbarSportSearch({ tempData, setAllEventData }) {
               <Form className="d-flex">
                 <Form.Control
                   type="search"
-                  placeholder="Search sports..."
+                  placeholder="Search Events..."
                   className="ms-5 pe-5"
                   style={{ width: "26rem" }}
                   aria-label="Search"
@@ -61,8 +61,6 @@ export default function NavbarSportSearch({ tempData, setAllEventData }) {
                 <option value="none">Select City...</option>
                 <option value="Bloomington">Bloomington</option>
                 <option value="Indianapolis">Indianapolis</option>
-                <option value="Martinsville">Martinsville</option>
-                <option value="Evansville">Evansville</option>
               </Form.Select>
             </Nav>
             <Nav>

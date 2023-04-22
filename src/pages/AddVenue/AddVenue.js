@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../config/firebase";
-import { setDoc, doc, collection } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import styles from "./AddVenue.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
