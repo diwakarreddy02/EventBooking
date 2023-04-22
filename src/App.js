@@ -9,6 +9,7 @@ import SportSearch from "./pages/SportSearch/SportSearch";
 import SearchEvents from "./pages/SearchEvents/SearchEvents";
 import BookingPage from "./pages/Bookingpage/Bookingpage";
 import AddVenue from "./pages/AddVenue/AddVenue";
+import AddEvent from "./pages/AddEvent/AddEvent";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from "./pages/AboutUs/AboutUs";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/Booking" element={<BookingPage />} />
         <Route path="/AddVenue" element={<AddVenue />} />
+        <Route path="/AddEvent" element={<AddEvent />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/HomePage" element={<HomePage />} />
         <Route path="/AboutUs" element={<AboutUs />} />

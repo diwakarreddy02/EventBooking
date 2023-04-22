@@ -11,7 +11,7 @@ export default function NavbarMain() {
   const [navbarItems, setNavbarItems] = useState(
     localStorage.getItem("navbarItems")
       ? JSON.parse(localStorage.getItem("navbarItems"))
-      : ["Events", "Search", "Contact"]
+      : ["Events", "Search", "Contact", "AddEvent"]
   );
 
   useEffect(() => {
