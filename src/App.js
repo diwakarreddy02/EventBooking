@@ -1,6 +1,5 @@
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import ContactForm from "./pages/ContactUs/ContactUs";
@@ -21,7 +20,6 @@ function App() {
       <Routes>
         <Route path="/Register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Search" element={<SportSearch />} />
         <Route path="/ContactUs" element={<ContactForm />} />
         <Route path="/Contact" element={<ContactForm />} />

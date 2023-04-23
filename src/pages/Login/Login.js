@@ -33,7 +33,7 @@ export default function Login() {
         const res = await signInWithEmailAndPassword(auth, email, password);
         if (res.user.emailVerified) {
           localStorage.setItem("email", email);
-          navigate("/dashboard");
+          navigate("/");
         } else {
           console.log("Please verify your email.");
         }

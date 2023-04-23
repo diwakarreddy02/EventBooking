@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
 import { MenuItems } from "./NavbarMenuItems";
+import { getAuth } from "firebase/auth";
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
 
+  const auth = getAuth();
   const isLoggedIn = localStorage.getItem("email");
-  const handleLogout = () => {
+  function handleLogout() {
     signOut(auth)
       .then(() => {
         localStorage.removeItem("email");
@@ -16,7 +19,7 @@ const Navbar = () => {
       .catch((error) => {
         console.log("Error signing out:", error);
       });
-  };
+  }
 
   return (
     <nav className="NavbarItems">
@@ -50,7 +53,9 @@ const Navbar = () => {
             </Link>
           </>
         ) : (
-          <></>
+          <Link onClick={() => handleLogout()}>
+            <button>LogOut</button>
+          </Link>
         )}
       </ul>
     </nav>
