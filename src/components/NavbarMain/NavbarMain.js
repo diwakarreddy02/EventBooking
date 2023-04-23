@@ -20,7 +20,7 @@ export default function NavbarMain() {
   const [navbarItems, setNavbarItems] = useState(
     localStorage.getItem("navbarItems")
       ? JSON.parse(localStorage.getItem("navbarItems"))
-      : ["Events", "Search", "Contact", "Calendars"]
+      : ["Events", "Search", "Contact", "Calendars", "Players"]
   );
 
   const [ProfileModalShow, setProfileModalShow] = useState(false);

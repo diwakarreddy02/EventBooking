@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import NavbarEventSearch from "../../components/NavbarEventSearch/NavbarEventSearch.js";
+import NavbarPlayerSearch from "../../components/NavbarPlayerSearch/NavbarPlayerSearch.js";
 import NavbarMain from "../../components/NavbarMain/NavbarMain";
-import { fetchAllEvents } from "../../services/SportService";
-import "./SearchEvents.css";
+import { fetchAllPLayers } from "../../services/SportService";
+import "./Players.module.css";
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 export default function SearchEvents() {
-  const [allEventData, setAllEventData] = useState([]);
+  const [allPlayers, setPlayerData] = useState([]);
   const [tempData, setTempData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [displayDetailsonModal, setDisplayDetailsOnModal] = useState({});
   useEffect(() => {
-    fetchAllEvents()
+    fetchAllPLayers()
       .then((res) => {
-        setAllEventData(res);
+        setPlayerData(res);
         setTempData(res);
       })
       .catch((err) => {
@@ -22,7 +22,7 @@ export default function SearchEvents() {
       });
   }, []);
 
-  useEffect(() => {}, [allEventData, tempData]);
+  useEffect(() => {}, [allPlayers, tempData]);
 
   const showDetails = (element) => {
     setDisplayDetailsOnModal(element);
@@ -33,23 +33,21 @@ export default function SearchEvents() {
     <>
       <div>
         <NavbarMain />
-        <NavbarEventSearch
-          tempData={tempData}
-          setAllEventData={setAllEventData}
-        />
+        <NavbarPlayerSearch tempData={tempData} setPlayerData={setPlayerData} />
         <div className="justify-content-around d-flex">
           <ListGroup className="sportsContainer" style={{ width: "70%" }}>
-            {allEventData.length ? (
-              allEventData.map((element, index) => (
+            {allPlayers.length ? (
+              allPlayers.map((element, index) => (
                 <ListGroup.Item
                   className="my-3 d-flex flex-row justify-content-between"
                   key={index}
                 >
                   <div>
-                    <h4>{element.EventName}</h4>
-                    <p>{element.City}</p>
-                    <p>$ {element.Cost}</p>
+                    <h4>{element.username}</h4>
+                    <p>{element.firstName}</p>
+                    <p>{element.lastName}</p>
                     <p>{element.Description}</p>
+                    <p>{element.age}</p>
                   </div>
                   <div className="d-flex flex-column justify-content-around">
                     {" "}
@@ -64,7 +62,7 @@ export default function SearchEvents() {
                 </ListGroup.Item>
               ))
             ) : (
-              <h3 className="text-center mt-5">No Events found!</h3>
+              <h3 className="text-center mt-5">No Players found!</h3>
             )}
           </ListGroup>
         </div>
