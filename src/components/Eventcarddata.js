@@ -1,6 +1,4 @@
 import "./Eventcard.css";
-import Eventcard from "./Eventcard";
-import { Link } from "react-router-dom";
 
 function Eventcarddata(props) {
   return (

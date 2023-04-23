@@ -1,6 +1,3 @@
-.body {
-  background-color: whitesmoke;
-}
 
 .header {
   text-align: center;
@@ -27,7 +24,7 @@
 
 .formContainerReg {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 2rem;
   padding: 20px;
   border-radius: 10px;
   background-color: white;
@@ -50,12 +47,11 @@
 }
 
 .input {
-  padding: 10px 10px 5px 15px;
+  padding: 10px 30px 5px 15px;
   font-size: 16px;
   border-radius: 5px;
-  border: none;
   background-color: white;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .input:focus {
@@ -66,25 +62,15 @@
 .button {
   background-color: black;
   color: #fff;
-  border: none;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 10px 10px;
   font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
 }
 
 .button:hover {
   background-color: grey;
   color: black;
   font-weight: bold;
-}
-
-.col6 {
-  width: 48%;
-  display: inline-block;
-  margin-right: 4%;
-  margin-bottom: 20px;
 }
 
 .col12 {
@@ -94,12 +80,6 @@
 
 .mb_3 {
   margin-bottom: 20px;
-}
-
-.text {
-  font-size: 16px;
-  text-align: center;
-  margin-top: 30px;
 }
 
 .link {

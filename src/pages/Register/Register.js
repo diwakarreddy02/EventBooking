@@ -68,7 +68,6 @@ export default function Register() {
         >
           <Row className={styles.mb_3}>
             <Form.Group className="col-12 mb-3">
-              <Form.Label className={styles.label}>Role</Form.Label>
               <Form.Select
                 className={styles.select}
                 name="submissiontType"
@@ -79,39 +78,37 @@ export default function Register() {
                 <option value="Player">Player</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group className={styles.col6} controlId="validationCustom01">
-              <Form.Label className={styles.label}>First name</Form.Label>
-              <Form.Control
-                className={styles.input}
-                required
-                type="text"
-                placeholder="Enter your first name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-              <Form.Control.Feedback type="invalid">
-                Please enter a valid first name
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group className={styles.col6} controlId="validationCustom02">
-              <Form.Label className={styles.label}>Last name</Form.Label>
-              <Form.Control
-                className={styles.input}
-                required
-                type="text"
-                placeholder="Enter your last name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-              <Form.Control.Feedback type="invalid">
-                Please enter a valid last name
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group
-              className={styles.col12}
-              controlId="validationCustomUsername"
-            >
-              <Form.Label className={styles.label}>Username</Form.Label>
+            <div className="d-flex flex-row justify-content-between">
+              {" "}
+              <Form.Group className="mb-3" controlId="validationCustom01">
+                <Form.Control
+                  className=" pe-5"
+                  required
+                  type="text"
+                  placeholder="Enter your first name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please enter a valid first name
+                </Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group controlId="validationCustom02">
+                <Form.Control
+                  className="pe-5"
+                  required
+                  type="text"
+                  placeholder="Enter your last name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please enter a valid last name
+                </Form.Control.Feedback>
+              </Form.Group>
+            </div>
+
+            <Form.Group controlId="validationCustomUsername">
               <InputGroup hasValidation>
                 <InputGroup.Text
                   className={styles.input}
@@ -133,10 +130,8 @@ export default function Register() {
                 </Form.Control.Feedback>
               </InputGroup>
             </Form.Group>
-            <Form.Group className={styles.col12}>
-              <Form.Label className={styles.label}>Age</Form.Label>
+            <Form.Group>
               <Form.Control
-                className={styles.input}
                 type="number"
                 placeholder="Enter your Age"
                 required
@@ -147,13 +142,8 @@ export default function Register() {
                 Please enter your age.
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group
-              className={styles.col12}
-              controlId="validationCustomEmail"
-            >
-              <Form.Label className={styles.label}>Email</Form.Label>
+            <Form.Group controlId="validationCustomEmail">
               <Form.Control
-                className={styles.input}
                 type="email"
                 placeholder="Enter your email"
                 required
@@ -168,7 +158,6 @@ export default function Register() {
               className={styles.col12}
               controlId="validationCustomPassword"
             >
-              <Form.Label className={styles.label}>Password</Form.Label>
               <Form.Control
                 className={styles.input}
                 type="password"
@@ -186,7 +175,7 @@ export default function Register() {
               Register
             </Button>
           </Row>
-          <p className={styles.text}>
+          <p className="text-center">
             Already have an account?{" "}
             <Link to="/login" className={styles.link}>
               Log in here
