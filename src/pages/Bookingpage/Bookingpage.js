@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "react-datetime/css/react-datetime.css";
-import { Button, Form } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Bookingpage.module.css";
 import { fetchAllVenues } from "../../services/SportService";
@@ -14,10 +14,14 @@ import {
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import Alert from "react-bootstrap/Alert";
+import CardDetails from "../../components/Paymentcard";
+import React from "react";
+
 
 function BookingPage() {
   const [selectedStartEndDate, setSelectedStartEndDate] = useState(["", ""]);
   const [isSlotBooked, setIsSlotBooked] = useState(false);
+  const [ProfileModalShow, setProfileModalShow] = useState(false);
   const [isInvalidDate, setIsInvalidDate] = useState(false);
   const [allSportsData, setAllSportsData] = useState({});
   const [dateBooking, setDateBooking] = useState("");
@@ -73,6 +77,9 @@ function BookingPage() {
   };
   document.body.className = styles.body;
   return (
+
+    
+
     <div className="d-flex flex-column text-center">
       <div>
         <h2>{allSportsData.Venue_Name}</h2>
@@ -129,29 +136,46 @@ function BookingPage() {
           Please select a valid date and time.
         </Form.Control.Feedback>
         <div className={styles.buttonContainer}>
-          <Button type="submit" variant="primary" className={styles.bookBtn}>
+          <Button onClick={()=>setProfileModalShow(true)}ltype="submit" variant="primary" className={styles.bookBtn}>
             Book Slot
           </Button>
-          <Link className={styles.link} to="/thankyou">
-            <Button variant="secondary" className={styles.cancelBtn}>
-              Cancel
-            </Button>
-          </Link>
         </div>
       </Form>
       {showAlert ? (
         <Alert
           className="m-5"
           dismissible
-          onClose={() => navigate("/SportSearch")}
+          onClose={() => navigate("/PaymentForm")}
           variant="success"
         >
-          The Slot is booked for {dateBooking} !
+          Redirecting to Payments page....!
         </Alert>
       ) : (
         <></>
       )}
+    
+      <Modal
+          show={ProfileModalShow}
+          onHide={() => setProfileModalShow(false)}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>User Details</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <CardDetails/>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setProfileModalShow(false)}
+            >
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
     </div>
+
+    
   );
 }
 
