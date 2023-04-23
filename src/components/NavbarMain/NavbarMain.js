@@ -20,7 +20,7 @@ export default function NavbarMain() {
   const [navbarItems, setNavbarItems] = useState(
     localStorage.getItem("navbarItems")
       ? JSON.parse(localStorage.getItem("navbarItems"))
-      : ["Events", "Search", "Contact", "Calendar"]
+      : ["Events", "Search", "Contact", "Calendars"]
   );
 
   const [ProfileModalShow, setProfileModalShow] = useState(false);
@@ -109,7 +109,11 @@ export default function NavbarMain() {
             <Nav className="me-auto"></Nav>
             <Nav>
               {navbarItems.map((element, index) => (
-                <Nav.Link key={index} href={"/" + element} style={{color:"white"}}>
+                <Nav.Link
+                  key={index}
+                  href={"/" + element}
+                  style={{ color: "white" }}
+                >
                   {element}
                 </Nav.Link>
               ))}
