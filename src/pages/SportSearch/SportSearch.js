@@ -6,6 +6,9 @@ import "./SportSearch.css";
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
+
+
+
 export default function SportSearch() {
   const [allSportsData, setAllSportsData] = useState([]);
   const [tempData, setTempData] = useState([]);
