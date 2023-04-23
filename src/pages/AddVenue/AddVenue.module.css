@@ -33,7 +33,7 @@ h1 {
 }
 
 .formControl:focus {
-  border-color: #00b4ff;
+  border-color: black;
   box-shadow: none;
 }
 
@@ -51,7 +51,7 @@ h1 {
 }
 
 .selectControl:focus {
-  border-color: #00b4ff;
+  border-color: black;
   box-shadow: none;
 }
 

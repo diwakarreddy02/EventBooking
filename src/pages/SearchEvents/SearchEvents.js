@@ -37,8 +37,8 @@ export default function SearchEvents() {
           tempData={tempData}
           setAllEventData={setAllEventData}
         />
-        <div className="justify-content-around d-flex ">
-          <ListGroup className="sportsContainer">
+        <div className="justify-content-around d-flex" >
+          <ListGroup className="sportsContainer" style={{width:"70%"}}>
             {allEventData.length ? (
               allEventData.map((element, index) => (
                 <ListGroup.Item
@@ -48,12 +48,12 @@ export default function SearchEvents() {
                   <div>
                     <h4>{element.EventName}</h4>
                     <p>{element.City}</p>
-                    <p>{element.Cost}</p>
+                    <p>$ {element.Cost}</p>
                     <p>{element.Description}</p>
                   </div>
                   <div className="d-flex flex-column justify-content-around">
                     {" "}
-                    <Button
+                    <Button style={{backgroundColor:"black"}}
                       variant="success"
                       onClick={() => showDetails(element)}
                     >
@@ -79,7 +79,7 @@ export default function SearchEvents() {
               <p>{displayDetailsonModal.Description}</p>
               <p>Cost per individual: {displayDetailsonModal.Cost}</p>
               <Link to={"/Booking?" + displayDetailsonModal.EventName}>
-                <Button>Book Event</Button>
+                <Button style={{backgroundColor:"black",border:"black"}}>Book Event</Button>
               </Link>
             </Modal.Body>
           </Modal>
