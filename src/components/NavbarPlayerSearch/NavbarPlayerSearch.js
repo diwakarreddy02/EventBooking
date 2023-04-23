@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
+import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -37,13 +38,20 @@ export default function NavbarPlayerSearch({ tempData, setPlayerData }) {
               <Form className="d-flex">
                 <Form.Control
                   type="search"
-                  placeholder="Sort by Age..."
+                  placeholder="Search by Age..."
                   className="ms-5 pe-5"
                   style={{ width: "26rem" }}
                   aria-label="Search"
                   onChange={(e) => setdataSearch(e.target.value)}
                 />
               </Form>
+            </Nav>
+            <Nav>
+              {" "}
+              <Button variant="primary">Ascending(AGE_SORT)</Button>{" "}
+            </Nav>
+            <Nav>
+              <Button variant="primary">Descending(AGE_SORT)</Button>{" "}
             </Nav>
             <Nav>
               <Form.Select

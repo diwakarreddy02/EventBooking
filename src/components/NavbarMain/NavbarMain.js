@@ -83,19 +83,6 @@ export default function NavbarMain() {
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.currentUser, pathChanged, navbarItems]);
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        setUsername("");
-        localStorage.removeItem("navbarItems");
-        forceUpdate();
-        window.history.replaceState(null, "", "/login");
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.log("Error signing out:", error);
-      });
-  };
 
   return (
     <>
