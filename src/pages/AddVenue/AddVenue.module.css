@@ -1,7 +1,6 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding-top: 2%;
 }
 /* .body {
     background-image: url('../../assets/Venue.jpeg');
@@ -33,7 +32,7 @@ h1 {
 }
 
 .formControl:focus {
-  border-color: black;
+  border-color: #00b4ff;
   box-shadow: none;
 }
 
@@ -51,12 +50,12 @@ h1 {
 }
 
 .selectControl:focus {
-  border-color: black;
+  border-color: #00b4ff;
   box-shadow: none;
 }
 
 .btn-primary {
-  background-color: black;
+  background-color: #00b4ff;
   border: none;
   border-radius: 30px;
   padding: 10px 30px;
@@ -67,5 +66,5 @@ h1 {
 }
 
 .btn-primary:hover {
-  background-color: grey;
+  background-color: #0095e0;
 }

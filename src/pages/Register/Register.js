@@ -19,6 +19,7 @@ export default function Register() {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
   const [role, setRole] = useState("Owner");
   const [password, setPassword] = useState("");
 
@@ -36,6 +37,7 @@ export default function Register() {
         firstName: firstName,
         lastName: lastName,
         email: email,
+        age: age,
         role: role,
         username: username,
         reservation: [],
@@ -55,7 +57,7 @@ export default function Register() {
         <h2 className={styles.subtitle}>Sign Up</h2>
       </div>
       <div
-        style={{ marginTop: "2%" },{backgroundColor: "whitesmoke"}}
+        style={({ marginTop: "2%" }, { backgroundColor: "whitesmoke" })}
         className="col-12 d-flex justify-content-around"
       >
         <Form
@@ -130,6 +132,20 @@ export default function Register() {
                   Please choose a username.
                 </Form.Control.Feedback>
               </InputGroup>
+            </Form.Group>
+            <Form.Group className={styles.col12}>
+              <Form.Label className={styles.label}>Age</Form.Label>
+              <Form.Control
+                className={styles.input}
+                type="number"
+                placeholder="Enter your Age"
+                required
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please enter your age.
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group
               className={styles.col12}
