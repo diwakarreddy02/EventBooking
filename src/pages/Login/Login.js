@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import GoogleButton from "react-google-button";
 import styles from "./Login.module.css";
@@ -33,7 +36,8 @@ export default function Login() {
           navigate("/dashboard");
         } else {
           console.log("Please verify your email.");
-        }}
+        }
+      }
     } catch (error) {
       console.log(error);
     }
@@ -56,19 +60,12 @@ export default function Login() {
   document.body.className = styles.body;
   return (
     <>
-      <div>
-        <Navbar />
-      </div>
-      <div className={styles.header}>
-        {/* <h1 className={styles.heading}>IU Eventia</h1> */}
-        <h2 className={styles.subHeading}>
-          Events and Venue booking made easy
-        </h2>
-      </div>
+      <Navbar />
+
+      <div className={styles.header}></div>
       <div className={`d-flex justify-content-around ${styles.formContainer}`}>
         <Form className={styles.form} onSubmit={handleSubmit}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label className={styles.label}>Email Address</Form.Label>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
               className={styles.input}
               type="email"
@@ -78,8 +75,7 @@ export default function Login() {
           </Form.Group>
           {!passwordReset && (
             <Form.Group controlId="formBasicPassword">
-              <Form.Label className={styles.label}>Password</Form.Label>
-              <Form.Control 
+              <Form.Control
                 className={styles.input}
                 type="password"
                 placeholder="Password"
@@ -114,7 +110,8 @@ export default function Login() {
           </div>
           {!passwordReset && (
             <div className={styles.googleButtonContainer}>
-              <GoogleButton style={{ backgroundColor: 'black' }}
+              <GoogleButton
+                style={{ backgroundColor: "black" }}
                 className={styles.googleButton}
                 onClick={() => singInwithGoogle()}
               />
