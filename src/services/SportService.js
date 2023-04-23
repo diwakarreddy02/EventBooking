@@ -21,7 +21,7 @@ export const fetchAllEvents = async () => {
 };
 
 export const fetchAllPLayers = async () => {
-  const collectionRef = await getDocs(collection(db, "Events"));
+  const collectionRef = await getDocs(collection(db, "Users"));
   let collectionRefArr = [];
   collectionRef.forEach((doc) => {
     collectionRefArr.push(doc.data());

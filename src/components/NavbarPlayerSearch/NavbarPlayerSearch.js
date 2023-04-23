@@ -1,11 +1,12 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
+import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-export default function NavbarSportSearch({ tempData, setAllEventData }) {
+export default function NavbarPlayerSearch({ tempData, setPlayerData }) {
   const setdataSearch = (searchValue) => {
-    setAllEventData(
+    setPlayerData(
       tempData.filter(
         (element) =>
           element.EventName.filter(
@@ -16,26 +17,18 @@ export default function NavbarSportSearch({ tempData, setAllEventData }) {
     );
   };
 
-  const selectEventSearch = (cityValue) => {
+  const selectPlayerSearch = (cityValue) => {
     if (cityValue === "none") {
-      setAllEventData(tempData);
+      setPlayerData(tempData);
     } else {
-      setAllEventData(
+      setPlayerData(
         tempData.filter(
           (element) => element.City.toLowerCase() === cityValue.toLowerCase()
         )
       );
     }
   };
-  const selectCostSearch = (costValue) => {
-    if (costValue === "none") {
-      setAllEventData(tempData);
-    } else if (costValue === "Free") {
-      setAllEventData(tempData.filter((element) => element.Cost === 0));
-    } else {
-      setAllEventData(tempData.filter((element) => element.Cost !== 0));
-    }
-  };
+
   return (
     <>
       <div>
@@ -45,7 +38,7 @@ export default function NavbarSportSearch({ tempData, setAllEventData }) {
               <Form className="d-flex">
                 <Form.Control
                   type="search"
-                  placeholder="Search Events..."
+                  placeholder="Search by Age..."
                   className="ms-5 pe-5"
                   style={{ width: "26rem" }}
                   aria-label="Search"
@@ -54,23 +47,24 @@ export default function NavbarSportSearch({ tempData, setAllEventData }) {
               </Form>
             </Nav>
             <Nav>
-              <Form.Select
-                onChange={(e) => selectEventSearch(e.target.value)}
-                style={{ paddingRight: "7rem" }}
-              >
-                <option value="none">Select City...</option>
-                <option value="Bloomington">Bloomington</option>
-                <option value="Indianapolis">Indianapolis</option>
-              </Form.Select>
+              {" "}
+              <Button variant="primary">Ascending(AGE_SORT)</Button>{" "}
+            </Nav>
+            <Nav>
+              <Button variant="primary">Descending(AGE_SORT)</Button>{" "}
             </Nav>
             <Nav>
               <Form.Select
-                onChange={(e) => selectCostSearch(e.target.value)}
+                onChange={(e) => selectPlayerSearch(e.target.value)}
                 style={{ paddingRight: "7rem" }}
               >
-                <option value="none">Select Costing...</option>
-                <option value="Free">Free</option>
-                <option value="Chargeable">Chargeable</option>
+                <option value="none">Select Sports...</option>
+                <option value="Cricket">Cricket</option>
+                <option value="Handball">Handball</option>
+                <option value="Soccer">Cricket</option>
+                <option value="Swimming">Swimming</option>
+                <option value="Badminton">Badminton</option>
+                <option value="PickleBall">PickleBall</option>
               </Form.Select>
             </Nav>
           </Container>

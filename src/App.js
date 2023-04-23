@@ -13,6 +13,7 @@ import AddEvent from "./pages/AddEvent/AddEvent";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Calendars from "./pages/Calendars/Calendars";
+import Players from "./pages/Players/Players";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/HomePage" element={<HomePage />} />
         <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/Players" element={<Players />} />
         <Route path="/SportSearch" element={<SportSearch />} />\{" "}
       </Routes>
     </div>
