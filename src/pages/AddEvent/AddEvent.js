@@ -111,7 +111,7 @@ export default function AddEvent() {
             <Form.Control
               type="number"
               placeholder="Capacity"
-              onChange={(e) => setCapacity(e.target.value)}
+              onChange={(e) => setCapacity(parseInt(e.target.value))}
               min={1}
             />
           </Col>
