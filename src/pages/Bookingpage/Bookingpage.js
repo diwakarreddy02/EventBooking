@@ -169,7 +169,7 @@ function BookingPage() {
               variant="secondary"
               onClick={() => setProfileModalShow(false)}
             >
-              Close
+              Pay
             </Button>
           </Modal.Footer>
         </Modal>

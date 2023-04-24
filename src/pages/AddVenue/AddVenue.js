@@ -9,6 +9,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Alert } from "react-bootstrap";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 
 const sport = [
   "Baseball",
@@ -24,7 +25,9 @@ const sport = [
 ];
 
 export default function AddVenue() {
+  const storage = getStorage();
   const [Venue_Name, setVenueName] = useState("");
+  const [UploadFiles, setUploadFiles] = useState([]);
   const [Cost, setCost] = useState("");
   const [City, setVenueLocation] = useState("");
   const [Capacity, setCapacity] = useState("");
@@ -39,18 +42,31 @@ export default function AddVenue() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await setDoc(doc(db, "Venues", Venue_Name), {
-        Venue_Name,
-        City,
-        Cost,
-        Capacity,
-        Description,
-        typeofsport,
-      }).then((res) => setShowAlert(true));
+      ref(storage, Venue_Name + "/" + UploadFiles[0].name);
+      const localStorageRef = ref(
+        storage,
+        Venue_Name + "/" + UploadFiles[0].name
+      );
+      uploadBytes(localStorageRef, UploadFiles[0]).then(() => {
+        getDownloadURL(
+          ref(storage, Venue_Name + "/" + UploadFiles[0].name)
+        ).then((url) => {
+          setDoc(doc(db, "Venues", Venue_Name), {
+            Venue_Name,
+            City,
+            Cost,
+            Capacity,
+            Description,
+            typeofsport,
+            archiImage: url
+          }).then((res) => setShowAlert(true));
+        });
+      });
     } catch (error) {
       console.error("Error adding venue: ", error);
     }
   };
+
   document.body.className = styles.body;
   return (
     <div className={styles.container}>
@@ -94,6 +110,7 @@ export default function AddVenue() {
             </Form.Control.Feedback>
           </Col>
         </Row>
+
         <Row>
           <Col md={6} className="mb-3">
             <Form.Control
@@ -112,9 +129,13 @@ export default function AddVenue() {
           </Col>
         </Row>
         <Row>
-          <Col className="mb-3">
+          <Col className="">
             <InputGroup className="mb-3">
-              <Form.Control disabled value={typeofsport.toString()} />
+              <Form.Control
+                disabled
+                placeholder="Please choose the sport from dropdown"
+                value={typeofsport.toString()}
+              />
               <DropdownButton
                 variant="outline-secondary"
                 title="Select Sport to Add"
@@ -147,9 +168,34 @@ export default function AddVenue() {
             </InputGroup>
           </Col>
         </Row>
-        <Button variant="primary" type="submit" style={{ backgroundColor:"black",border:"black"}}>
-          Add Venue
-        </Button>
+        <Row className=" d-flex flex-row">
+          <Col className="col-3">
+            {" "}
+            <p className="mt-2 text-center"> Upload Images:</p>
+          </Col>
+          <Col>
+            <Form.Control
+              type="file"
+              placeholder="input file"
+              onChange={(e) => setUploadFiles(e.target.files)}
+              accept=".png, .jpeg, .jpg"
+              required
+            />
+          </Col>
+        </Row>
+        <Row className="d-flex justify-content-around mt-4">
+          <Button
+            variant="primary"
+            type="submit"
+            style={{
+              backgroundColor: "black",
+              border: "black",
+              width: "280px",
+            }}
+          >
+            Add Venue
+          </Button>
+        </Row>
       </Form>
       {showAlert ? (
         <Alert className="m-5" variant="success">

@@ -81,6 +81,7 @@ export default function SportSearch() {
               <p style={{ color: "grey" }}>{displayDetailsonModal.City}</p>
               <p>{displayDetailsonModal.Description}</p>
               <p>Cost per individual: {displayDetailsonModal.Cost}</p>
+              <img src={displayDetailsonModal.archiImage} />
               <Link to={"/Booking?" + displayDetailsonModal.Venue_Name}>
                 <Button style={{backgroundColor:"black",border:"black"}}>Book Venue</Button>
               </Link>
