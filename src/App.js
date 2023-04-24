@@ -6,6 +6,7 @@ import ContactForm from "./pages/ContactUs/ContactUs";
 import { Route, Routes } from "react-router-dom";
 import SportSearch from "./pages/SportSearch/SportSearch";
 import SearchEvents from "./pages/SearchEvents/SearchEvents";
+import ShowEvents from "./pages/ShowEvents/ShowEvents";
 import BookingPage from "./pages/Bookingpage/Bookingpage";
 import AddVenue from "./pages/AddVenue/AddVenue";
 import AddEvent from "./pages/AddEvent/AddEvent";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/Booking" element={<BookingPage />} />
         <Route path="/AddVenue" element={<AddVenue />} />
         <Route path="/AddEvent" element={<AddEvent />} />
+        <Route path="/ShowEvents" element={<ShowEvents />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/HomePage" element={<HomePage />} />
         <Route path="/AboutUs" element={<AboutUs />} />

@@ -2,73 +2,64 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  
+  height: 100%;
 }
 
 .cardetails-payment {
   background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  padding: 20px;
   width: 100%;
-  max-width: 500px;
-  padding: 2rem;
-  background-color: #f5f5f5; 
+  max-width: 450px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .cardetails-head {
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: bold;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #333333;
+  margin-bottom: 30px;
 }
 
-.cardetails-form {
+
+.cardetails-icons {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.cardetails-space {
-  margin-bottom: 1.5rem;
+.cardetails-icons .fa-3x {
+  margin: 0 10px;
 }
 
 .cardetails-label {
   display: block;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #333333;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .cardetails-input {
   width: 100%;
-  padding: 0.5rem 1rem;
-  border: 1px solid #dddddd;
+  padding: 10px;
+  font-size: 16px;
   border-radius: 4px;
-  font-size: 1rem;
-  color: #333333;
-  background-color: #ffffff;
-  transition: all 0.3s;
-}
-
-.cardetails-input:focus {
-  border-color: #8c44ff;
-  outline: none;
-  box-shadow: 0 0 5px rgba(140, 68, 255, 0.2);
+  border: 1px solid #cccccc;
+  background-color: #f8f9fa;
 }
 
 .cardetails-icon-relative {
   position: relative;
 }
 
-.cardetails-icon-relative i {
+.cardetails-cardtype {
   position: absolute;
-  right: 10px;
   top: 50%;
+  right: 10px;
   transform: translateY(-50%);
-  font-size: 1.2rem;
-  color: #8c44ff;
+}
+
+.cardetails-space {
+  margin-bottom: 20px;
 }
 
 .cardetails-card-grp {
@@ -80,20 +71,25 @@
   width: 48%;
 }
 
+.fa-calendar-alt,
+.fa-lock,
+.fa-user {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
 .cardetails-btn {
-  background-color: #090909;
+  background-color: #0366d6;
   color: #ffffff;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border: none;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s;
-  text-align: center;
-  margin-top: 1rem;
 }
 
 .cardetails-btn:hover {
-  background-color: #6a33cc;
+  background-color: #024a8f;
 }

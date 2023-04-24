@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import NavbarEventSearch from "../../components/NavbarEventSearch/NavbarEventSearch.js";
 import NavbarMain from "../../components/NavbarMain/NavbarMain";
 import { fetchAllEvents } from "../../services/SportService";
-import "./SearchEvents.css";
+import "./ShowEvents.css";
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar.js";
 import Footer from "../../components/Footer";
-import CardDetails from "../../components/Paymentcard";
-
-export default function SearchEvents() {
+export default function ShowEvents() {
   const [allEventData, setAllEventData] = useState([]);
   const [tempData, setTempData] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -31,14 +30,12 @@ export default function SearchEvents() {
     setShowModal(true);
   };
 
+  const [updatedData, setUpdatedData] = useState("");
+
   return (
     <>
       <div>
-        <NavbarMain />
-        <NavbarEventSearch
-          tempData={tempData}
-          setAllEventData={setAllEventData}
-        />
+        <h1>Display and Cancel Events</h1>
         <div className="justify-content-around d-flex">
           <ListGroup className="sportsContainer" style={{ width: "70%" }}>
             {allEventData.length ? (
@@ -50,10 +47,8 @@ export default function SearchEvents() {
                   <div>
                     <h4>{element.EventName}</h4>
                     <p>{element.City}</p>
+                    <p>$ {element.Cost}</p>
                     <p>{element.Description}</p>
-                    <p>Cost : {element.Cost}</p>
-
-                    <p>Seats Available : {element.Capacity}</p>
                   </div>
                   <div className="d-flex flex-column justify-content-around">
                     {" "}
@@ -62,7 +57,7 @@ export default function SearchEvents() {
                       variant="success"
                       onClick={() => showDetails(element)}
                     >
-                      Book Event
+                      Cancel Event
                     </Button>
                   </div>
                 </ListGroup.Item>
@@ -72,27 +67,6 @@ export default function SearchEvents() {
             )}
           </ListGroup>
         </div>
-        {showModal ? (
-          <Modal show={showModal} onHide={() => setShowModal(false)}>
-            <Modal.Header closeButton>
-              <Modal.Title id="example-custom-modal-styling-title">
-                {displayDetailsonModal.EventName}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <CardDetails />
-            </Modal.Body>
-            <Modal.Footer>
-              <Link to={"/Booking?" + displayDetailsonModal.EventName}>
-                <Button style={{ backgroundColor: "black", border: "black" }}>
-                  Pay
-                </Button>
-              </Link>
-            </Modal.Footer>
-          </Modal>
-        ) : (
-          <></>
-        )}
       </div>
       <Footer />
     </>
