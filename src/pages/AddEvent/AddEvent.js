@@ -95,12 +95,16 @@ export default function AddEvent() {
             <Form.Control
               type="number"
               placeholder="Capacity"
-              onChange={(e) => setCapacity(e.target.value)}
+              onChange={(e) => setCapacity(parseInt(e.target.value))}
               min={1}
             />
           </Col>
         </Row>
-        <Button variant="primary" type="submit" style={{backgroundColor:"black",border:"black"}}>
+        <Button
+          variant="primary"
+          type="submit"
+          style={{ backgroundColor: "black", border: "black" }}
+        >
           Add Event
         </Button>
       </Form>
