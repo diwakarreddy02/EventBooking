@@ -1,5 +1,5 @@
 import React from "react";
-import "./Eventcard.css"
+import "./Eventcard.module.css"
 import Eventcarddata from "./Eventcarddata";
 
 
