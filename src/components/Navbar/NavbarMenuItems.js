@@ -35,7 +35,18 @@ export const MenuItems = [
     cName: "nav-links",
     icon: "fa-solid fa-address-book",
   },
-
+  {
+    title: "ShowEvents",
+    url: "/ShowEvents",
+    cName: "nav-links",
+    icon: "fa-solid fa-magnifying-glass",
+  },
+  {
+    title: "Players",
+    url: "/Players",
+    cName: "nav-links",
+    icon: "fa-solid fa-magnifying-glass",
+  },
   {
     title: "Sign Up",
     url: "/Register",
