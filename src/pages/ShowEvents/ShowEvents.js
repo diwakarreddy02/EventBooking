@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
-import NavbarEventSearch from "../../components/NavbarEventSearch/NavbarEventSearch.js";
-import NavbarMain from "../../components/NavbarMain/NavbarMain";
 import { fetchAllEvents } from "../../services/SportService";
 import "./ShowEvents.css";
-import { Button, ListGroup, Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar.js";
+import { Button, ListGroup } from "react-bootstrap";
 import Footer from "../../components/Footer";
 export default function ShowEvents() {
   const [allEventData, setAllEventData] = useState([]);
   const [tempData, setTempData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [displayDetailsonModal, setDisplayDetailsOnModal] = useState({});
   useEffect(() => {
     fetchAllEvents()
       .then((res) => {
@@ -25,12 +19,6 @@ export default function ShowEvents() {
 
   useEffect(() => {}, [allEventData, tempData]);
 
-  const showDetails = (element) => {
-    setDisplayDetailsOnModal(element);
-    setShowModal(true);
-  };
-
-  const [updatedData, setUpdatedData] = useState("");
 
   return (
     <>
@@ -55,7 +43,6 @@ export default function ShowEvents() {
                     <Button
                       style={{ backgroundColor: "black" }}
                       variant="success"
-                      onClick={() => showDetails(element)}
                     >
                       Cancel Event
                     </Button>

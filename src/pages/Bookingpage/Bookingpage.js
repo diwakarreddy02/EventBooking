@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "react-datetime/css/react-datetime.css";
 import { Modal, Button, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./Bookingpage.module.css";
 import { fetchAllVenues } from "../../services/SportService";
 import {
@@ -17,10 +17,8 @@ import Alert from "react-bootstrap/Alert";
 import CardDetails from "../../components/Paymentcard";
 import React from "react";
 
-
 function BookingPage() {
   const [selectedStartEndDate, setSelectedStartEndDate] = useState(["", ""]);
-  const [isSlotBooked, setIsSlotBooked] = useState(false);
   const [ProfileModalShow, setProfileModalShow] = useState(false);
   const [isInvalidDate, setIsInvalidDate] = useState(false);
   const [allSportsData, setAllSportsData] = useState({});
@@ -77,9 +75,6 @@ function BookingPage() {
   };
   document.body.className = styles.body;
   return (
-
-    
-
     <div className="d-flex flex-column text-center">
       <div>
         <h2>{allSportsData.Venue_Name}</h2>
@@ -136,7 +131,12 @@ function BookingPage() {
           Please select a valid date and time.
         </Form.Control.Feedback>
         <div className={styles.buttonContainer}>
-          <Button onClick={()=>setProfileModalShow(true)}ltype="submit" variant="primary" className={styles.bookBtn}>
+          <Button
+            onClick={() => setProfileModalShow(true)}
+            ltype="submit"
+            variant="primary"
+            className={styles.bookBtn}
+          >
             Book Slot
           </Button>
         </div>
@@ -153,41 +153,15 @@ function BookingPage() {
       ) : (
         <></>
       )}
-    
-      {/* <Modal
-          show={ProfileModalShow}
-          onHide={() => setProfileModalShow(false)}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>User Details</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-          <CardDetails/>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              variant="secondary"
-              onClick={() => setProfileModalShow(false)}
-            >
-              close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-    </div> */}
-          <Modal
-        show={ProfileModalShow}
-        onHide={() => setProfileModalShow(false)}
-      >
+      <Modal show={ProfileModalShow} onHide={() => setProfileModalShow(false)}>
         <Modal.Header closeButton>
           <Modal.Title>User Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CardDetails/>
+          <CardDetails />
         </Modal.Body>
       </Modal>
-      </div>
-
-    
+    </div>
   );
 }
 
