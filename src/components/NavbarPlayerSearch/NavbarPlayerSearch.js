@@ -17,7 +17,7 @@ export default function NavbarPlayerSearch({ tempData, setPlayerData }) {
     );
   };
 
-  const selectPlayerSearch = (sports) => {
+  const selectPlayerSearch = (cityValue) => {
     if (cityValue === "none") {
       setPlayerData(tempData);
     } else {
