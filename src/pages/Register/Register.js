@@ -35,7 +35,7 @@ export default function Register() {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(0);
   const [typeofsport, setSport] = useState([]);
   const [role, setRole] = useState("Owner");
   const [password, setPassword] = useState("");
@@ -59,6 +59,7 @@ export default function Register() {
         age: age,
         role: role,
         username: username,
+        typeofsport: typeofsport,
         reservation: [],
       });
       navigate("/login");
