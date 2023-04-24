@@ -1,6 +1,8 @@
 import "./Payment.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCcVisa, faCcMastercard, faCcAmex } from "@fortawesome/free-brands-svg-icons";
 
 export default function CardDetails() {
   const [card, setCard] = useState({
@@ -90,6 +92,12 @@ export default function CardDetails() {
       <div className="cardetails-wrapper">
         <div className="cardetails-payment">
           <h2 className="carddetails-head">Card Details</h2>
+          
+          <div className="cardetails-icons">
+          <FontAwesomeIcon icon={faCcVisa} className="far fa-3x" />
+          <FontAwesomeIcon icon={faCcMastercard} className="far fa-3x" />
+          <FontAwesomeIcon icon={faCcAmex} className="far fa-3x" />
+        </div>
 
           <div className="cardetails-form">
             <div className="cardetails-card cardetails-space cardetails-icon-relative">

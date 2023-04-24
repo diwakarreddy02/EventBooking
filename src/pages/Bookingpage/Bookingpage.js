@@ -154,7 +154,7 @@ function BookingPage() {
         <></>
       )}
     
-      <Modal
+      {/* <Modal
           show={ProfileModalShow}
           onHide={() => setProfileModalShow(false)}
         >
@@ -169,11 +169,23 @@ function BookingPage() {
               variant="secondary"
               onClick={() => setProfileModalShow(false)}
             >
-              Pay
+              close
             </Button>
           </Modal.Footer>
         </Modal>
-    </div>
+    </div> */}
+          <Modal
+        show={ProfileModalShow}
+        onHide={() => setProfileModalShow(false)}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>User Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <CardDetails/>
+        </Modal.Body>
+      </Modal>
+      </div>
 
     
   );
