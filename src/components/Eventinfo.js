@@ -1,5 +1,5 @@
 import React from "react"
-import "./Eventinfo.module.css"
+import "./Eventinfo.css"
 import Eventinfodata from "./Eventinfodata";
 
 

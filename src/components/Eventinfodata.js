@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./Eventinfo.module.css"
+import "./Eventinfo.css"
 import React from "react";
 
 class Eventinfodata extends Component {

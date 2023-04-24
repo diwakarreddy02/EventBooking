@@ -1,4 +1,4 @@
-import "./HeroStyles.module.css";
+import "./HeroStyles.css";
 
 
 function Hero (props) {
