@@ -17,7 +17,7 @@ export default function NavbarPlayerSearch({ tempData, setPlayerData }) {
     );
   };
 
-  const selectPlayerSearch = (cityValue) => {
+  const selectPlayerSearch = (sports) => {
     if (cityValue === "none") {
       setPlayerData(tempData);
     } else {
@@ -45,13 +45,6 @@ export default function NavbarPlayerSearch({ tempData, setPlayerData }) {
                   onChange={(e) => setdataSearch(e.target.value)}
                 />
               </Form>
-            </Nav>
-            <Nav>
-              {" "}
-              <Button variant="primary">Ascending(AGE_SORT)</Button>{" "}
-            </Nav>
-            <Nav>
-              <Button variant="primary">Descending(AGE_SORT)</Button>{" "}
             </Nav>
             <Nav>
               <Form.Select
