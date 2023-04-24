@@ -20,6 +20,8 @@ export default function SearchEvents() {
     updateDoc(numberoftickets, {
       Capacity: Capacity - numberofTkts,
     });
+
+    setShowModal(false);
   };
   useEffect(() => {
     fetchAllEvents()
