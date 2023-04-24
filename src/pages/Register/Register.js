@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
@@ -12,7 +12,23 @@ import Row from "react-bootstrap/Row";
 import styles from "./Register.module.css";
 import { db } from "../../config/firebase";
 import { setDoc, doc } from "firebase/firestore";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
+const sport = [
+  "Baseball",
+  "Soccer",
+  "Basketball",
+  "Hockey",
+  "Tennis",
+  "Swimming",
+  "Badminton",
+  "Pickleball",
+  "Cricket",
+  "Volleyball",
+];
 export default function Register() {
   const [validated, setValidated] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -20,11 +36,14 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
+  const [typeofsport, setSport] = useState([]);
   const [role, setRole] = useState("Owner");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  console.log(typeofsport);
 
+  useEffect(() => {}, [typeofsport]);
   // Function to post data to Firestore
   const registerSubmit = async (e) => {
     e.preventDefault();
@@ -170,6 +189,40 @@ export default function Register() {
               <Form.Control.Feedback type="invalid">
                 Please enter a valid password.
               </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group Col className="mb-3">
+              <InputGroup className="mb-3">
+                <Form.Control disabled value={typeofsport.toString()} />
+                <DropdownButton
+                  variant="outline-secondary"
+                  title="Select Sport to Add"
+                  align="end"
+                >
+                  {sport.map((sport, index) =>
+                    typeofsport.indexOf(sport) === -1 ? (
+                      <Dropdown.Item
+                        key={index}
+                        onClick={() => setSport([...typeofsport, sport])}
+                        value={sport}
+                      >
+                        {sport}
+                      </Dropdown.Item>
+                    ) : (
+                      <></>
+                    )
+                  )}
+                </DropdownButton>
+                {typeofsport.length ? (
+                  <Button>
+                    <FontAwesomeIcon
+                      onClick={() => setSport(typeofsport.slice(0, -1))}
+                      icon={faTrash}
+                    />
+                  </Button>
+                ) : (
+                  <></>
+                )}
+              </InputGroup>
             </Form.Group>
             <Button className={styles.button} type="submit">
               Register

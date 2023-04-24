@@ -11,6 +11,28 @@ export default function SearchEvents() {
   const [tempData, setTempData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [displayDetailsonModal, setDisplayDetailsOnModal] = useState({});
+  const [ageRange, setAgeRange] = useState({ min: "", max: "" });
+
+  //   docRef
+  //     .get()
+  //     .then((doc) => {
+  //       if (doc.exists) {
+  //         const ageData = doc.data().age; // Replace "myField" with your own field name
+  //         console.log(ageData);
+  //       } else {
+  //         console.log("No such document!");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error getting document:", error);
+  //     });
+  //   const filteredData = filterByAgeRange(data);
+
+  //   const filterByAgeRange = (data) => {
+  //     return data.filter((item) => {
+  //       return item.age >= ageRange.min && item.age <= ageRange.max;
+  //     });
+  //   };
   useEffect(() => {
     fetchAllPLayers()
       .then((res) => {
@@ -36,6 +58,28 @@ export default function SearchEvents() {
         <NavbarPlayerSearch tempData={tempData} setPlayerData={setPlayerData} />
         <div className="justify-content-around d-flex">
           <ListGroup className="sportsContainer" style={{ width: "70%" }}>
+            {/* <div>
+              <input
+                type="number"
+                value={ageRange.min}
+                onChange={(e) =>
+                  setAgeRange({ ...ageRange, min: e.target.value })
+                }
+              />
+              <input
+                type="number"
+                value={ageRange.max}
+                onChange={(e) =>
+                  setAgeRange({ ...ageRange, max: e.target.value })
+                }
+              />
+              {filteredData.map((item) => (
+                <div key={item.id}>
+                  <p>{item.name}</p>
+                  <p>{item.age}</p>
+                </div>
+              ))}
+            </div> */}
             {allPlayers.length ? (
               allPlayers.map((element, index) => (
                 <ListGroup.Item
