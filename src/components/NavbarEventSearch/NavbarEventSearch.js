@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-export default function NavbarSportSearch({ tempData, setAllEventData }) {
+export default function NavbarEventSearch({ tempData, setAllEventData }) {
   const setdataSearch = (searchValue) => {
     setAllEventData(
       tempData.filter(
