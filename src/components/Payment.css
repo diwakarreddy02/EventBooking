@@ -4,7 +4,7 @@
   color: blue !important;
 }
 .cardetails-expiry-input {
-  background-color: black;
+  background-color: rgb(69, 115, 105);
   color: white;
   text-align: center;
 }
@@ -50,17 +50,7 @@
   justify-content: space-between;
 }
 
-.cardetails-card-item {
-  width: 48%;
-}
 
-.cardetails-space {
-  margin-bottom: 20px;
-}
-
-.cardetails-icon-relative {
-  position: relative;
-}
 
 .cardetails-icon-relative .fas,
 .cardetails-icon-relative .far {

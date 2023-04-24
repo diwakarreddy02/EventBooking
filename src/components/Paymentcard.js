@@ -1,23 +1,22 @@
 import "./Payment.css";
 import React, { useState } from "react";
 
-
 export default function CardDetails() {
   const [card, setCard] = useState({
     cardno: "",
     cardtype: "far fa-credit-card",
-    expirydt: ""
+    expirydt: "",
   });
-  
+
   const onChange = (e) => {
     var cartype_new = cardnumber(e.target.value);
     setCard({
       ...card,
       cardno: e.target.value,
-      cardtype: cartype_new
+      cardtype: cartype_new,
     });
   };
-  
+
   const cardnumber = (inputtxt) => {
     var matches = inputtxt.match(/(\d+)/);
     var cardno = "";
@@ -55,7 +54,7 @@ export default function CardDetails() {
     }
     return parts.length > 1 ? parts.join(" - ") : value;
   };
-  
+
   const expriy_format = (value) => {
     const expdate = value;
     const expDateFormatter =
@@ -65,21 +64,18 @@ export default function CardDetails() {
 
     return expDateFormatter;
   };
-  
+
   const onChangeExp = (e) => {
     setCard({
       ...card,
-      expirydt: e.target.value
+      expirydt: e.target.value,
     });
   };
-
 
   return (
     <>
       <div className="cardetails-wrapper">
         <div className="cardetails-payment">
-          <h2 className="carddetails-head">Card Details</h2>
-
           <div className="cardetails-form">
             <div className="cardetails-card cardetails-space cardetails-icon-relative">
               <label className="cardetails-label">Card Number:</label>
@@ -136,10 +132,7 @@ export default function CardDetails() {
               <input type="text" className="cardetails-input" placeholder="" />
               <i className="fas fa-user"></i>
             </div>
-            <div className="cardetails-btn">Pay</div>
           </div>
-
-
         </div>
       </div>
     </>
