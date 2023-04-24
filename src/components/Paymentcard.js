@@ -2,28 +2,32 @@ import "./Payment.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCcVisa, faCcMastercard, faCcAmex } from "@fortawesome/free-brands-svg-icons";
+import {
+  faCcVisa,
+  faCcMastercard,
+  faCcAmex,
+} from "@fortawesome/free-brands-svg-icons";
 
 export default function CardDetails() {
   const [card, setCard] = useState({
     cardno: "",
     cardtype: "far fa-credit-card",
-    expirydt: ""
+    expirydt: "",
   });
 
   const [paymentCompleted, setPaymentCompleted] = useState(false);
   const [showPaymentWindow, setShowPaymentWindow] = useState(true);
   const navigate = useNavigate();
-  
+
   const onChange = (e) => {
     var cartype_new = cardnumber(e.target.value);
     setCard({
       ...card,
       cardno: e.target.value,
-      cardtype: cartype_new
+      cardtype: cartype_new,
     });
   };
-  
+
   const cardnumber = (inputtxt) => {
     var matches = inputtxt.match(/(\d+)/);
     var cardno = "";
@@ -61,7 +65,7 @@ export default function CardDetails() {
     }
     return parts.length > 1 ? parts.join(" - ") : value;
   };
-  
+
   const expriy_format = (value) => {
     const expdate = value;
     const expDateFormatter =
@@ -71,11 +75,11 @@ export default function CardDetails() {
 
     return expDateFormatter;
   };
-  
+
   const onChangeExp = (e) => {
     setCard({
       ...card,
-      expirydt: e.target.value
+      expirydt: e.target.value,
     });
   };
 
@@ -83,21 +87,18 @@ export default function CardDetails() {
     setPaymentCompleted(true);
     setShowPaymentWindow(false);
     window.alert("Payment completed: Booking successful");
-    navigate("/SportSearch")
+    navigate("/SportSearch");
   };
-
 
   return (
     <>
       <div className="cardetails-wrapper">
         <div className="cardetails-payment">
-          <h2 className="carddetails-head">Card Details</h2>
-          
           <div className="cardetails-icons">
-          <FontAwesomeIcon icon={faCcVisa} className="far fa-3x" />
-          <FontAwesomeIcon icon={faCcMastercard} className="far fa-3x" />
-          <FontAwesomeIcon icon={faCcAmex} className="far fa-3x" />
-        </div>
+            <FontAwesomeIcon icon={faCcVisa} className="far fa-3x" />
+            <FontAwesomeIcon icon={faCcMastercard} className="far fa-3x" />
+            <FontAwesomeIcon icon={faCcAmex} className="far fa-3x" />
+          </div>
 
           <div className="cardetails-form">
             <div className="cardetails-card cardetails-space cardetails-icon-relative">
@@ -155,15 +156,9 @@ export default function CardDetails() {
               <input type="text" className="cardetails-input" placeholder="" />
               <i className="fas fa-user"></i>
             </div>
-            {/* <div className="cardetails-btn" onClick={handlePayment}>Pay</div> */}
           </div>
-          {showPaymentWindow && (
-        <div className="cardetails-wrapper">
-          <div className="cardetails-btn" onClick={handlePayment}>Pay</div>
         </div>
-      )}
-    </div>
-  </div>
-</>
+      </div>
+    </>
   );
 }
