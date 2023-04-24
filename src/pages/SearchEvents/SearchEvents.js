@@ -6,6 +6,8 @@ import "./SearchEvents.css";
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
+import CardDetails from "../../components/Paymentcard";
+
 export default function SearchEvents() {
   const [allEventData, setAllEventData] = useState([]);
   const [tempData, setTempData] = useState([]);
@@ -29,8 +31,6 @@ export default function SearchEvents() {
     setShowModal(true);
   };
 
-  const [updatedData, setUpdatedData] = useState("");
-
   return (
     <>
       <div>
@@ -50,8 +50,10 @@ export default function SearchEvents() {
                   <div>
                     <h4>{element.EventName}</h4>
                     <p>{element.City}</p>
-                    <p>$ {element.Cost}</p>
                     <p>{element.Description}</p>
+                    <p>Cost : {element.Cost}</p>
+
+                    <p>Seats Available : {element.Capacity}</p>
                   </div>
                   <div className="d-flex flex-column justify-content-around">
                     {" "}
@@ -60,7 +62,7 @@ export default function SearchEvents() {
                       variant="success"
                       onClick={() => showDetails(element)}
                     >
-                      View Details
+                      Book Event
                     </Button>
                   </div>
                 </ListGroup.Item>
@@ -78,15 +80,15 @@ export default function SearchEvents() {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <p style={{ color: "grey" }}>{displayDetailsonModal.City}</p>
-              <p>{displayDetailsonModal.Description}</p>
-              <p>Cost per individual: {displayDetailsonModal.Cost}</p>
+              <CardDetails />
+            </Modal.Body>
+            <Modal.Footer>
               <Link to={"/Booking?" + displayDetailsonModal.EventName}>
                 <Button style={{ backgroundColor: "black", border: "black" }}>
-                  Book Event
+                  Pay
                 </Button>
               </Link>
-            </Modal.Body>
+            </Modal.Footer>
           </Modal>
         ) : (
           <></>
