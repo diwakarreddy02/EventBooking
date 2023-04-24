@@ -20,8 +20,10 @@ const sport = [
 
 export default function AddEvent() {
   const [EventName, setEventname] = useState("");
+  const [EventOwner, setEventOwner] = useState("");
   const [Cost, setCost] = useState("");
   const [City, setEventLocation] = useState("");
+  const [Date, setDate] = useState("");
   const [Capacity, setCapacity] = useState("");
   const [Description, setDescription] = useState("");
   const [showAlert, setShowAlert] = useState(false);
@@ -31,10 +33,13 @@ export default function AddEvent() {
     try {
       await setDoc(doc(db, "Events", EventName), {
         EventName,
+        EventOwner,
         City,
         Cost,
         Capacity,
         Description,
+        Date,
+        Cancelled: false,
       }).then((res) => setShowAlert(true));
     } catch (error) {
       console.error("Error adding Event: ", error);
@@ -46,11 +51,22 @@ export default function AddEvent() {
       <h1>Add a Event</h1>
       <Form className={styles.formContainer} onSubmit={handleSubmit}>
         <Row>
-          <Col className="mb-3">
+          <Col md={6} className="mb-3">
             <Form.Control
               type="text"
               placeholder="Event Name"
               onChange={(e) => setEventname(e.target.value)}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Please enter a valid name.
+            </Form.Control.Feedback>
+          </Col>
+          <Col md={6} className="mb-3">
+            <Form.Control
+              type="text"
+              placeholder="Event Owner"
+              onChange={(e) => setEventOwner(e.target.value)}
               required
             />
             <Form.Control.Feedback type="invalid">
@@ -62,8 +78,8 @@ export default function AddEvent() {
           <Col md={6} className="mb-3">
             <Form.Control
               type="number"
-              placeholder="Cost"
-              onChange={(e) => setCost(e.target.value)}
+              placeholder="Event participation Cost"
+              onChange={(e) => setCost(parseInt(e.target.value))}
               min={0}
               required
             />
@@ -100,7 +116,21 @@ export default function AddEvent() {
             />
           </Col>
         </Row>
-        <Button variant="primary" type="submit" style={{backgroundColor:"black",border:"black"}}>
+        <Row>
+          <Col className="mb-3">
+            <Form.Control
+              type="date"
+              placeholder="Date of Event"
+              onChange={(e) => setDate(e.target.value)}
+              min={1}
+            />
+          </Col>
+        </Row>
+        <Button
+          variant="primary"
+          type="submit"
+          style={{ backgroundColor: "black", border: "black" }}
+        >
           Add Event
         </Button>
       </Form>

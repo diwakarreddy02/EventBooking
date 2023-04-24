@@ -42,24 +42,14 @@ export default function NavbarEventSearch({ tempData, setAllEventData }) {
         <Navbar bg="light" expand="lg">
           <Container>
             <Nav>
-              <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search Events..."
-                  className="ms-5 pe-5"
-                  style={{ width: "26rem" }}
-                  aria-label="Search"
-                  onChange={(e) => setdataSearch(e.target.value)}
-                />
-              </Form>
-            </Nav>
-            <Nav>
               <Form.Select
                 onChange={(e) => selectEventSearch(e.target.value)}
                 style={{ paddingRight: "7rem" }}
               >
                 <option value="none">Select City...</option>
                 <option value="Bloomington">Bloomington</option>
+                <option value="Martinsville">Martinsville</option>
+                <option value="Plainfield">Plainfield</option>
                 <option value="Indianapolis">Indianapolis</option>
               </Form.Select>
             </Nav>

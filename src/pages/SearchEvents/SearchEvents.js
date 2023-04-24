@@ -29,16 +29,18 @@ export default function SearchEvents() {
     setShowModal(true);
   };
 
+  const [updatedData, setUpdatedData] = useState("");
+
   return (
     <>
-      <div> 
+      <div>
         <NavbarMain />
         <NavbarEventSearch
           tempData={tempData}
           setAllEventData={setAllEventData}
         />
-        <div className="justify-content-around d-flex" >
-          <ListGroup className="sportsContainer" style={{width:"70%"}}>
+        <div className="justify-content-around d-flex">
+          <ListGroup className="sportsContainer" style={{ width: "70%" }}>
             {allEventData.length ? (
               allEventData.map((element, index) => (
                 <ListGroup.Item
@@ -53,7 +55,8 @@ export default function SearchEvents() {
                   </div>
                   <div className="d-flex flex-column justify-content-around">
                     {" "}
-                    <Button style={{backgroundColor:"black"}}
+                    <Button
+                      style={{ backgroundColor: "black" }}
                       variant="success"
                       onClick={() => showDetails(element)}
                     >
@@ -79,7 +82,9 @@ export default function SearchEvents() {
               <p>{displayDetailsonModal.Description}</p>
               <p>Cost per individual: {displayDetailsonModal.Cost}</p>
               <Link to={"/Booking?" + displayDetailsonModal.EventName}>
-                <Button style={{backgroundColor:"black",border:"black"}}>Book Event</Button>
+                <Button style={{ backgroundColor: "black", border: "black" }}>
+                  Book Event
+                </Button>
               </Link>
             </Modal.Body>
           </Modal>
