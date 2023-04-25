@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Bookingpage.module.css";
 import { fetchAllVenues } from "../../services/SportService";
 import {
-  updateDoc,
   query,
   getDocs,
   where,
   collection,
   doc,
+  setDoc,
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import Alert from "react-bootstrap/Alert";
@@ -18,7 +18,7 @@ import CardDetails from "../../components/Paymentcard";
 import React from "react";
 
 function BookingPage() {
-  const [selectedStartEndDate, setSelectedStartEndDate] = useState(["", ""]);
+  const [selectedStartEndTime, setSelectedStartEndTime] = useState(["", ""]);
   const [formError, setFormError] = useState("");
   const [ProfileModalShow, setProfileModalShow] = useState(false);
   const [isInvalidDate, setIsInvalidDate] = useState(false);
@@ -30,7 +30,7 @@ function BookingPage() {
   const userEmail = localStorage.getItem("email");
   useEffect(() => {
     setIsInvalidDate(false);
-  }, [dateBooking, selectedStartEndDate]);
+  }, [dateBooking, selectedStartEndTime]);
 
   useEffect(() => {
     fetchAllVenues()
@@ -48,25 +48,14 @@ function BookingPage() {
       });
   }, []);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (new Date(`1970-01-01T${selectedStartEndDate[0]}:00`) >= new Date(`1970-01-01T${selectedStartEndDate[1]}:00`)) {
-  //     // Display an error message or take appropriate action if the end time is not greater than the start time
-  //     return;
-  //   }
-  //   // Submit the form if the validation passes
-  //   // ...
-  // };
+  console.log(selectedStartEndTime);
 
   const handleSubmit = async (event) => {
-    const [selectedStartTime, selectedEndTime] = selectedStartEndDate;
+    const [selectedStartTime, selectedEndTime] = selectedStartEndTime;
     event.preventDefault();
-    console.log(8);
-    // if (!selectedStartEndDate[0].length && !selectedStartEndDate[1].length) {
-    // if (new Date(selectedStartEndDate[0]) >= new Date(selectedStartEndDate[1])) {
-      if (selectedStartTime[0] >= selectedEndTime[1]) {
-        setFormError("End time must be greater than start time.");
-        setIsInvalidDate(false);
+    if (selectedStartTime[0] >= selectedEndTime[1]) {
+      setFormError("End time must be greater than start time.");
+      setIsInvalidDate(false);
     } else {
       console.log(7);
       const userRef = await query(
@@ -76,11 +65,15 @@ function BookingPage() {
       const querySnapshot = await getDocs(userRef);
       querySnapshot.forEach(async (userDoc) => {
         const tempDoc = doc(db, "Users", userDoc.id);
-        await updateDoc(tempDoc, {
+        await setDoc(tempDoc, {
+          ...userDoc.data(),
           reservation: [
-            allSportsData.Venue_Name,
-            dateBooking,
-            ...selectedStartEndDate,
+            {
+              venueName: allSportsData.Venue_Name,
+              dateOfBooking: dateBooking,
+              startTime: selectedStartTime[0],
+              endTime: selectedStartTime[1],
+            },
           ],
         })
           .then((res) => setShowAlert(true))
@@ -88,46 +81,6 @@ function BookingPage() {
       });
     }
   };
-
-  // const handleSubmit = async (event) => {
-
-  //   var totalSeconds1 = '10:20:45';
-  //   var totalSeconds2 = '5:10:10';
-  //   totalSeconds1 =  totalSeconds1.split(':');
-  //   totalSeconds2 =  totalSeconds1.split(':');
-
-  //   totalSeconds1 = parseInt(selectedStartTime[0] * 3600 + selectedStartTime[1] * 60 + selectedStartTime[0]);
-  //   totalSeconds2 = parseInt(selectedEndTime[0] * 3600 + selectedEndTime[1] * 60 + selectedEndTime[0]);
-  //   event.preventDefault();
-  //   console.log(8)
-  //   const [selectedStartTime, selectedEndTime] = selectedStartEndDate;
-    
-  //   // Check if end time is greater than start time
-  //   if (totalSeconds1 >= totalSeconds2) {
-  //     setFormError("End time must be greater than start time.");
-  //     return;
-  //   }
-    
-  //   // Submit the form if validation passes
-  //   const userRef = await query(
-  //     collection(db, "Users"),
-  //     where("email", "==", userEmail)
-  //   );
-  //   const querySnapshot = await getDocs(userRef);
-  //   querySnapshot.forEach(async (userDoc) => {
-  //     const tempDoc = doc(db, "Users", userDoc.id);
-  //     await updateDoc(tempDoc, {
-  //       reservation: [
-  //         allSportsData.Venue_Name,
-  //         dateBooking,
-  //         ...selectedStartEndDate,
-  //       ],
-  //     })
-  //       .then((res) => setShowAlert(true))
-  //       .catch((err) => console.log(err));
-  //   });
-  // };
-  
 
   document.body.className = styles.body;
   return (
@@ -146,8 +99,7 @@ function BookingPage() {
             <Form.Control
               type="date"
               min={new Date().toISOString().split("T")[0]}
-              onChange={(e) => setDateBooking(e.target.value)
-              }
+              onChange={(e) => setDateBooking(e.target.value)}
             />
           </Form.Group>
           <div className="my-3 d-flex flex-row">
@@ -155,9 +107,9 @@ function BookingPage() {
             <Form.Control
               type="time"
               onChange={(e) =>
-                setSelectedStartEndDate([
+                setSelectedStartEndTime([
                   e.target.value,
-                  selectedStartEndDate[1],
+                  selectedStartEndTime[1],
                 ])
               }
               min="00:00"
@@ -168,8 +120,8 @@ function BookingPage() {
             <p className="h5 my-2 px-3 col-4">End Time:</p>
             <Form.Control
               onChange={(e) =>
-                setSelectedStartEndDate([
-                  selectedStartEndDate[0],
+                setSelectedStartEndTime([
+                  selectedStartEndTime[0],
                   e.target.value,
                 ])
               }
@@ -202,15 +154,14 @@ function BookingPage() {
         <Alert
           className="m-5"
           dismissible
-          onClose={() => navigate("/PaymentForm")}
+          onClose={() => navigate("/Search")}
           variant="success"
         >
-          Redirecting to Payments page....!
+          Slot has been booked Successfully !
         </Alert>
       ) : (
         <></>
       )}
-
 
       <Modal show={ProfileModalShow} onHide={() => setProfileModalShow(false)}>
         <Modal.Header closeButton>
@@ -219,6 +170,15 @@ function BookingPage() {
         <Modal.Body>
           <CardDetails />
         </Modal.Body>
+        <Modal.Footer>
+          <Button
+            className="px-5"
+            onClick={handleSubmit}
+            style={{ backgroundColor: "black", border: "black" }}
+          >
+            Pay
+          </Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );
