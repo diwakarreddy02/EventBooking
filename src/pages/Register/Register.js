@@ -72,9 +72,9 @@ export default function Register() {
 
   return (
     <>
-      <div className={styles.header} style={{height: "80vh"}}>
-        <h1 className={styles.title}>Welcome to Eventia</h1>
-        <h2 className={styles.subtitle}>Sign Up</h2>
+      <div className={styles.header} style={{height: "20vh"}}>
+        {/* <h1 className={styles.title}>Welcome to Eventia</h1>
+        <h2 className={styles.subtitle}>Sign Up</h2> */}
       </div>
       <div
         style={({ marginTop: "2%" }, { backgroundColor: "whitesmoke" })}
