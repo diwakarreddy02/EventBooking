@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchAllEvents } from "../../services/SportService";
-import "./ShowEvents.css";
+import "./MyEvents.css";
 import { Button, ListGroup } from "react-bootstrap";
 import Footer from "../../components/Footer";
 import { updateDoc, doc } from "firebase/firestore";

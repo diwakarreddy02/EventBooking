@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import NavbarEventSearch from "../../components/NavbarEventSearch/NavbarEventSearch.js";
-import NavbarMain from "../../components/NavbarMain/NavbarMain";
-import { fetchAllEvents } from "../../services/SportService";
+import NavbarMain from "../../components/NavbarMain/NavbarMain.js";
+import { fetchAllEvents } from "../../services/SportService.js";
 import "./SearchEvents.css";
 import { Button, ListGroup, Modal } from "react-bootstrap";
-import CardDetails from "../../components/Paymentcard";
+import Footer from "../../components/Footer.js";
+import CardDetails from "../../components/Paymentcard.js";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../../config/firebase.js";
 import Form from "react-bootstrap/Form";
-import Navbar from "../../components/Navbar/Navbar.js";
-
-
-
-
 export default function SearchEvents() {
   const [allEventData, setAllEventData] = useState([]);
   const [tempData, setTempData] = useState([]);
@@ -49,13 +45,12 @@ export default function SearchEvents() {
     <>
       <div>
         <NavbarMain />
-        <Navbar />
         <NavbarEventSearch
           tempData={tempData}
           setAllEventData={setAllEventData}
         />
         <div className="justify-content-around d-flex">
-          <ListGroup className="sportsContainer" style={{ width: "70%", margin: "10px"}}>
+          <ListGroup className="sportsContainer" style={{ width: "70%" }}>
             {allEventData.length ? (
               allEventData.map((element, index) => (
                 <ListGroup.Item
@@ -139,6 +134,7 @@ export default function SearchEvents() {
           <></>
         )}
       </div>
+      <Footer />
     </>
   );
 }

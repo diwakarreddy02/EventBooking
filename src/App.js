@@ -6,8 +6,7 @@ import Register from "./pages/Register/Register";
 import ContactForm from "./pages/ContactUs/ContactUs";
 import { Route, Routes } from "react-router-dom";
 import SportSearch from "./pages/SportSearch/SportSearch";
-import SearchEvents from "./pages/SearchEvents/SearchEvents";
-import ShowEvents from "./pages/ShowEvents/ShowEvents";
+import MyEvents from "./pages/MyEvents/MyEvents";
 import BookingPage from "./pages/Bookingpage/Bookingpage";
 import AddVenue from "./pages/AddVenue/AddVenue";
 import AddEvent from "./pages/AddEvent/AddEvent";
@@ -17,6 +16,7 @@ import Calendars from "./pages/Calendars/Calendars";
 import Players from "./pages/Players/Players";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
+import SearchEvents from "./pages/SearchEvents/SearchEvents";
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
         <Route path="/Booking" element={<BookingPage />} />
         <Route path="/AddVenue" element={<AddVenue />} />
         <Route path="/AddEvent" element={<AddEvent />} />
-        <Route path="/ShowEvents" element={<ShowEvents />} />
+        <Route path="/MyEvents" element={<MyEvents />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/HomePage" element={<HomePage />} />
         <Route path="/AboutUs" element={<AboutUs />} />
