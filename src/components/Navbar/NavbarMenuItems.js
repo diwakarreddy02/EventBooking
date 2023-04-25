@@ -36,8 +36,8 @@ export const MenuItems = [
     icon: "fa-solid fa-address-book",
   },
   {
-    title: "ShowEvents",
-    url: "/ShowEvents",
+    title: "MyEvents",
+    url: "/MyEvents",
     cName: "nav-links",
     icon: "fa-solid fa-magnifying-glass",
   },
