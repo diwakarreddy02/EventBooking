@@ -16,6 +16,7 @@ import Calendars from "./pages/Calendars/Calendars";
 import Players from "./pages/Players/Players";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
+import SearchEvents from "./pages/SearchEvents/SearchEvents";
 
 function App() {
   return (
