@@ -19,6 +19,12 @@ export const MenuItems = [
   },
   {
     title: "Add Venue",
+    url: "/AddEvent",
+    cName: "nav-links",
+    icon: "fa-light fa-location-dot",
+  },
+  {
+    title: "Add Events",
     url: "/AddVenue",
     cName: "nav-links",
     icon: "fa-light fa-location-dot",
@@ -29,12 +35,12 @@ export const MenuItems = [
     cName: "nav-links",
     icon: "fa-solid fa-circle-info",
   },
-  {
-    title: "Contact",
-    url: "/ContactUs",
-    cName: "nav-links",
-    icon: "fa-solid fa-address-book",
-  },
+  // {
+  //   title: "Contact",
+  //   url: "/ContactUs",
+  //   cName: "nav-links",
+  //   icon: "fa-solid fa-address-book",
+  // },
   {
     title: "MyEvents",
     url: "/MyEvents",
