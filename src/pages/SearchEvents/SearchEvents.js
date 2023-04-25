@@ -44,7 +44,6 @@ export default function SearchEvents() {
   return (
     <>
       <div>
-        <NavbarMain />
         <NavbarEventSearch
           tempData={tempData}
           setAllEventData={setAllEventData}
@@ -134,7 +133,6 @@ export default function SearchEvents() {
           <></>
         )}
       </div>
-      <Footer />
     </>
   );
 }
