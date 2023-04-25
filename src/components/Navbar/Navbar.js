@@ -4,18 +4,19 @@ import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { MenuItems } from "./NavbarMenuItems";
 import { getAuth } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
-
+  const navigate = useNavigate();
   const auth = getAuth();
   const userEmailId = localStorage.getItem("email");
-  
+
   function handleLogout() {
     signOut(auth)
       .then(() => {
         localStorage.removeItem("email");
-        window.location.reload();
+        navigate("/HomePage");
       })
       .catch((error) => {
         console.log("Error signing out:", error);
@@ -33,7 +34,6 @@ const Navbar = () => {
       <ul className={clicked ? "nav-menu active" : "nav-menu"}>
         {userEmailId &&
           MenuItems.map((item, index) => {
-
             return (
               <li key={index}>
                 <Link className={item.cName} to={item.url}>
@@ -59,7 +59,6 @@ const Navbar = () => {
             <button>LogOut</button>
           </Link>
         )}
-
       </ul>
     </nav>
   );
