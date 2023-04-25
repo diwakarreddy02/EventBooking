@@ -108,6 +108,7 @@ export default function CardDetails() {
                 className="cardetails-input"
                 data-mask="0000 0000 0000 0000"
                 placeholder="XXXX-XXXX-XXXX-XXXX"
+                required
                 value={cc_format(card.cardno)}
                 onChange={onChange}
                 onKeyPress={(event) => {
@@ -128,6 +129,7 @@ export default function CardDetails() {
                   name="expiry-data"
                   className="cardetails-input"
                   placeholder="mm / yy"
+                  required
                   onChange={onChangeExp}
                   value={expriy_format(card.expirydt)}
                 />
@@ -142,6 +144,7 @@ export default function CardDetails() {
                   placeholder="000"
                   maxlength="3"
                   pattern="[0-9][0-9][0-9]"
+                  required
                   onKeyPress={(event) => {
                     if (!/[0-9]/.test(event.key)) {
                       event.preventDefault();
