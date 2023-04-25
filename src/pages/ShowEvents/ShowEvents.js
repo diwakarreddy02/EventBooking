@@ -3,10 +3,28 @@ import { fetchAllEvents } from "../../services/SportService";
 import "./ShowEvents.css";
 import { Button, ListGroup } from "react-bootstrap";
 import Footer from "../../components/Footer";
+import { updateDoc, doc } from "firebase/firestore";
+import { db } from "../../config/firebase.js";
 export default function ShowEvents() {
   const [allEventData, setAllEventData] = useState([]);
   const [tempData, setTempData] = useState([]);
   const userEmail = localStorage.getItem("email");
+
+  const cancelEvents = (EventName) => {
+    const setTrue = doc(db, "Events", EventName);
+    updateDoc(setTrue, {
+      Cancelled: true,
+    });
+    fetchAllEvents()
+      .then((res) => {
+        setAllEventData(res.filter((e) => e.Owner_Mail === userEmail));
+        setTempData(res.filter((e) => e.Owner_Mail === userEmail));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     fetchAllEvents()
       .then((res) => {
@@ -43,9 +61,11 @@ export default function ShowEvents() {
                     {" "}
                     <Button
                       style={{ backgroundColor: "black" }}
+                      onClick={() => cancelEvents(element.EventName)}
                       variant="success"
+                      disabled={element.Cancelled}
                     >
-                      Cancel Event
+                      {element.Cancelled ? "Event is Cancelled" : "Cancel"}
                     </Button>
                   </div>
                 </ListGroup.Item>
