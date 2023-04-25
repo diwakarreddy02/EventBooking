@@ -78,7 +78,7 @@ export default function AddVenue() {
   return (
     <div className={styles.container} style={{ paddingTop: "150px" }}>
       <h1>Add Venue</h1>
-      <Form className={styles.formContainer} onSubmit={handleSubmit}>
+      <Form className="bg-white p-5 mb-5" style={{borderRadius: "20px"}} onSubmit={handleSubmit}>
         <Row>
           <Col className="mb-3">
             <Form.Control

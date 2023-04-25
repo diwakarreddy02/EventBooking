@@ -38,8 +38,8 @@ export default function NavbarSportSearch({ tempData, setAllSportsData }) {
   };
   return (
     <>
-      <div >
-        <Navbar bg="whitesmoke" expand="lg" style={{ paddingTop: "2rem" }}>
+      <div style={{marginTop: "10%"}}>
+        <Navbar bg="dark" className="mx-5" expand="lg" style={{ padding: "1rem" , borderRadius: "10px"}}>
           <Container >
             <Nav >
               <Form className="d-flex">

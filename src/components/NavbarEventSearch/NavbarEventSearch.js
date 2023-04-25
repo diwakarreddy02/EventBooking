@@ -39,7 +39,7 @@ export default function NavbarEventSearch({ tempData, setAllEventData }) {
   return (
     <>
       <div>
-        <Navbar bg="light" expand="lg">
+        <Navbar className="mx-5" style={{marginTop: "10%", borderRadius: "10px"}} bg="dark" expand="lg">
           <Container>
             <Nav>
               <Form.Select
