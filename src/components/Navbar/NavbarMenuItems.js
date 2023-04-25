@@ -24,8 +24,8 @@ export const MenuItems = [
     icon: "fa-light fa-location-dot",
   },
   {
-    title: "About",
-    url: "/AboutUs",
+    title: "Calendar",
+    url: "/Calendars",
     cName: "nav-links",
     icon: "fa-solid fa-circle-info",
   },

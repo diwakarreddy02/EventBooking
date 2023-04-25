@@ -159,6 +159,7 @@ export default function CardDetails() {
               <input type="text" className="cardetails-input" placeholder="" />
               <i className="fas fa-user"></i>
             </div>
+            <div className="cardetails-btn">Pay</div>
           </div>
         </div>
       </div>

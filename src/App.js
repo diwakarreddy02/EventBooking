@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/Login/Login";
@@ -16,8 +17,19 @@ import Calendars from "./pages/Calendars/Calendars";
 import Players from "./pages/Players/Players";
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
   return (
-    <div className="App">
+    <div className={`App ${isDarkMode ? "dark" : "light"}`}>
+      <div className="tdnn">
+        <label className="switch">
+          <input type="checkbox" onChange={toggleDarkMode} />
+          <span className="slider"></span>
+        </label>
+      </div>
       <Routes>
         <Route path="/Register" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -37,6 +49,10 @@ function App() {
         <Route path="/Players" element={<Players />} />
         <Route path="/SportSearch" element={<SportSearch />} />\{" "}
       </Routes>
+      {/* <label className="switch">
+        <input type="checkbox" onChange={toggleDarkMode} />
+        <span className="slider"></span>
+      </label> */}
     </div>
   );
 }

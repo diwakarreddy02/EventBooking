@@ -6,6 +6,7 @@ import "./SportSearch.css";
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar"
 
 
 
@@ -35,7 +36,7 @@ export default function SportSearch() {
   return (
     <>
       <div>
-        <NavbarMain />
+        <Navbar />
         <NavbarSportSearch
           tempData={tempData}
           setAllSportsData={setAllSportsData}
@@ -82,9 +83,12 @@ export default function SportSearch() {
               <p>{displayDetailsonModal.Description}</p>
               <p>Cost per individual: {displayDetailsonModal.Cost}</p>
               <img src={displayDetailsonModal.archiImage} />
-              <Link to={"/Booking?" + displayDetailsonModal.Venue_Name}>
-                <Button style={{backgroundColor:"black",border:"black"}}>Book Venue</Button>
-              </Link>
+              <Modal.Footer>
+                <Link to={"/Booking?" + displayDetailsonModal.Venue_Name}>
+                  <Button style={{backgroundColor:"black",border:"black"}}>Book Venue</Button>
+                </Link>
+              </Modal.Footer>
+              
             </Modal.Body>
           </Modal>
         ) : (

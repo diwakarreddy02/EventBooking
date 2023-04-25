@@ -9,7 +9,8 @@ const Navbar = () => {
   const [clicked, setClicked] = useState(false);
 
   const auth = getAuth();
-  const isLoggedIn = localStorage.getItem("email");
+  const userEmailId = localStorage.getItem("email");
+  
   function handleLogout() {
     signOut(auth)
       .then(() => {
@@ -30,8 +31,9 @@ const Navbar = () => {
       </div>
 
       <ul className={clicked ? "nav-menu active" : "nav-menu"}>
-        {isLoggedIn &&
+        {userEmailId &&
           MenuItems.map((item, index) => {
+
             return (
               <li key={index}>
                 <Link className={item.cName} to={item.url}>
@@ -42,7 +44,7 @@ const Navbar = () => {
             );
           })}
 
-        {!isLoggedIn ? (
+        {!userEmailId ? (
           <>
             {" "}
             <Link to="/Login">
@@ -57,6 +59,7 @@ const Navbar = () => {
             <button>LogOut</button>
           </Link>
         )}
+
       </ul>
     </nav>
   );
