@@ -21,8 +21,8 @@ const ContactForm = () => {
   document.body.className = styles.body;
   return (
     <>
-      <NavbarMain />
-      <div className="container mt-3">
+      
+      <div style={{padding: "10%"}} >
         <h2 className="mb-3">Contact Us</h2>
         <form onSubmit={onSubmit}>
           <div className="mb-3">
@@ -66,7 +66,6 @@ const ContactForm = () => {
           </ul>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

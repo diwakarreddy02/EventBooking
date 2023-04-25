@@ -83,7 +83,8 @@ export default function SearchEvents() {
           </ListGroup>
         </div>
         {showModal ? (
-          <Modal
+          <Modal 
+            
             show={showModal}
             onHide={() => {
               setNumberoftkts(1);
