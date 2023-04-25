@@ -6,9 +6,7 @@ import "./SportSearch.css";
 import { Button, ListGroup, Modal } from "react-bootstrap";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar"
-
-
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function SportSearch() {
   const [allSportsData, setAllSportsData] = useState([]);
@@ -72,7 +70,7 @@ export default function SportSearch() {
           </ListGroup>
         </div>
         {showModal ? (
-          <Modal  show={showModal} onHide={() => setShowModal(false)}>
+          <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
               <Modal.Title id="example-custom-modal-styling-title">
                 {displayDetailsonModal.Venue_Name}
@@ -85,17 +83,17 @@ export default function SportSearch() {
               <img src={displayDetailsonModal.archiImage} />
               <Modal.Footer>
                 <Link to={"/Booking?" + displayDetailsonModal.Venue_Name}>
-                  <Button style={{backgroundColor:"black",border:"black"}}>Book Venue</Button>
+                  <Button style={{ backgroundColor: "black", border: "black" }}>
+                    Book Venue
+                  </Button>
                 </Link>
               </Modal.Footer>
-              
             </Modal.Body>
           </Modal>
         ) : (
           <></>
         )}
       </div>
-      <Footer />
     </>
   );
 }

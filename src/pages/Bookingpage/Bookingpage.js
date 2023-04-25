@@ -164,7 +164,7 @@ function BookingPage() {
       )}
 
       <Modal show={ProfileModalShow} onHide={() => setProfileModalShow(false)}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton >
           <Modal.Title>User Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
