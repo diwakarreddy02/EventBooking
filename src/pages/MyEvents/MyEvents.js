@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { fetchAllEvents } from "../../services/SportService";
 import "./MyEvents.css";
 import { Button, ListGroup } from "react-bootstrap";
-import Footer from "../../components/Footer";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../../config/firebase.js";
 export default function ShowEvents() {
@@ -40,7 +39,7 @@ export default function ShowEvents() {
 
   return (
     <>
-      <div style={{ height: "80vh" }}>
+      <div style={{ height: "80vh", paddingTop: "150px" }}>
         <h1>My Events</h1>
         <hr />
         <div className="justify-content-around d-flex">
@@ -76,7 +75,6 @@ export default function ShowEvents() {
           </ListGroup>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
