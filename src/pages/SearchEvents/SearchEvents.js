@@ -15,10 +15,13 @@ export default function SearchEvents() {
   const [showModal, setShowModal] = useState(false);
   const [displayDetailsonModal, setDisplayDetailsOnModal] = useState({});
   const [numberofTkts, setNumberoftkts] = useState(1);
-  const handlePaymentOfEvent = (EventName, Capacity) => {
+  const userEmailId = localStorage.getItem("email");
+
+  const handlePaymentOfEvent = (EventName, Capacity, UsersBooked) => {
     const numberoftickets = doc(db, "Events", EventName);
     updateDoc(numberoftickets, {
       Capacity: Capacity - numberofTkts,
+      UsersBooked: [...UsersBooked, userEmailId],
     });
 
     setShowModal(false);
@@ -62,18 +65,43 @@ export default function SearchEvents() {
                     <p>{element.Description}</p>
                     <p>Cost : {element.Cost}</p>
 
-                    <p>Seats Available : {element.Capacity}</p>
+                    <p>
+                      Seats Available :{" "}
+                      {element.Cancelled ? "N/A" : element.Capacity}{" "}
+                    </p>
                   </div>
                   <div className="d-flex flex-column justify-content-around">
                     {" "}
                     <Button
-                      disabled={!element.Capacity}
-                      style={{ backgroundColor: "black" }}
+                      disabled={
+                        !element.Capacity ||
+                        element.UsersBooked.indexOf(userEmailId) !== -1 ||
+                        element.Cancelled
+                      }
+                      style={{
+                        backgroundColor: element.Cancelled
+                          ? "darkred"
+                          : "black",
+                      }}
                       variant="success"
                       onClick={() => showDetails(element)}
                     >
-                      {element.Capacity === 0 ? "Sold Out!" : "Book Event"}
+                      {element.Capacity === 0
+                        ? "Sold Out!"
+                        : element.UsersBooked.indexOf(userEmailId) !== -1
+                        ? "Event Already Booked"
+                        : element.Cancelled
+                        ? "Event Cancelled"
+                        : "Book Event"}
                     </Button>
+                    {element.Cancelled &&
+                    element.UsersBooked.indexOf(userEmailId) !== -1 ? (
+                      <h5 className="text-center" style={{ color: "red" }}>
+                        Event is Cancelled!!
+                      </h5>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </ListGroup.Item>
               ))
@@ -119,7 +147,8 @@ export default function SearchEvents() {
                 onClick={() =>
                   handlePaymentOfEvent(
                     displayDetailsonModal.EventName,
-                    displayDetailsonModal.Capacity
+                    displayDetailsonModal.Capacity,
+                    displayDetailsonModal.UsersBooked
                   )
                 }
                 style={{ backgroundColor: "black", border: "black" }}
