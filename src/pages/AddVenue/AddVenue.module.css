@@ -68,3 +68,9 @@ h1 {
 .btn-primary:hover {
   background-color: #0095e0;
 }
+
+.AddVenue_container__5uvMP {
+  max-width: 800px;
+  padding-top: 60px;
+  margin: 0 auto;
+}

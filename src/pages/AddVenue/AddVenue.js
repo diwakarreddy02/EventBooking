@@ -10,6 +10,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Alert } from "react-bootstrap";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "@firebase/storage";
+import Navbar from "../../components/Navbar/Navbar"
+
+
 
 const sport = [
   "Baseball",
@@ -69,7 +72,9 @@ export default function AddVenue() {
 
   document.body.className = styles.body;
   return (
+    <div className="AddVenue_container__5uvMP">
     <div className={styles.container}>
+      <Navbar/>
       <h1>Add Venue</h1>
       <Form className={styles.formContainer} onSubmit={handleSubmit}>
         <Row>
@@ -204,6 +209,7 @@ export default function AddVenue() {
       ) : (
         <></>
       )}
+    </div>
     </div>
   );
 }
