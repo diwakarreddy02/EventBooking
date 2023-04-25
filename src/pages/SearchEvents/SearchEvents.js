@@ -4,11 +4,15 @@ import NavbarMain from "../../components/NavbarMain/NavbarMain";
 import { fetchAllEvents } from "../../services/SportService";
 import "./SearchEvents.css";
 import { Button, ListGroup, Modal } from "react-bootstrap";
-import Footer from "../../components/Footer";
 import CardDetails from "../../components/Paymentcard";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../../config/firebase.js";
 import Form from "react-bootstrap/Form";
+import Navbar from "../../components/Navbar/Navbar.js";
+
+
+
+
 export default function SearchEvents() {
   const [allEventData, setAllEventData] = useState([]);
   const [tempData, setTempData] = useState([]);
@@ -45,12 +49,13 @@ export default function SearchEvents() {
     <>
       <div>
         <NavbarMain />
+        <Navbar />
         <NavbarEventSearch
           tempData={tempData}
           setAllEventData={setAllEventData}
         />
         <div className="justify-content-around d-flex">
-          <ListGroup className="sportsContainer" style={{ width: "70%" }}>
+          <ListGroup className="sportsContainer" style={{ width: "70%", margin: "10px"}}>
             {allEventData.length ? (
               allEventData.map((element, index) => (
                 <ListGroup.Item
@@ -134,7 +139,6 @@ export default function SearchEvents() {
           <></>
         )}
       </div>
-      <Footer />
     </>
   );
 }

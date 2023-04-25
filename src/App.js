@@ -15,22 +15,13 @@ import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Calendars from "./pages/Calendars/Calendars";
 import Players from "./pages/Players/Players";
-import RatingReview from "./components/RatingReview";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
   return (
-    <div className={`App ${isDarkMode ? "dark" : "light"}`}>
-      <div className="tdnn">
-        <label className="switch">
-          <input type="checkbox" onChange={toggleDarkMode} />
-          <span className="slider"></span>
-        </label>
-      </div>
+    <>
+      <Navbar />
       <Routes>
         <Route path="/Register" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -45,17 +36,13 @@ function App() {
         <Route path="/AddEvent" element={<AddEvent />} />
         <Route path="/ShowEvents" element={<ShowEvents />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/RateAndReview" element={<RatingReview />} />
         <Route path="/HomePage" element={<HomePage />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Players" element={<Players />} />
         <Route path="/SportSearch" element={<SportSearch />} />\{" "}
       </Routes>
-      {/* <label className="switch">
-        <input type="checkbox" onChange={toggleDarkMode} />
-        <span className="slider"></span>
-      </label> */}
-    </div>
+      <Footer />
+    </>
   );
 }
 

@@ -72,7 +72,7 @@ export default function SportSearch() {
           </ListGroup>
         </div>
         {showModal ? (
-          <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal  show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
               <Modal.Title id="example-custom-modal-styling-title">
                 {displayDetailsonModal.Venue_Name}

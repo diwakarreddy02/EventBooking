@@ -103,7 +103,7 @@ export default function NavbarMain() {
       <div>
         <Navbar className="NavbarContainer" collapseOnSelect expand="lg">
           <Navbar.Brand href="/Dashboard">
-            <p className="NavbarHeading pt-3">IU Eventia</p>
+            <p className="NavbarHeading pt-3">Eventia</p>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -180,7 +180,8 @@ export default function NavbarMain() {
           </Modal.Footer>
         </Modal>
       ) : (
-        <></>
+        <>
+        </>
       )}
     </>
   );

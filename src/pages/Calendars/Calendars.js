@@ -5,7 +5,7 @@ import "./Calendar.css";
 
 const Calendars = () => {
   return (
-    <div className="calendar__container" style={{ paddingInline: "5rem" }}>
+    <div className="calendar__container" style={{ paddingInline: "5rem", padding: "80px" }}>
       <FullCalendar
         selectable={true}
         selectMirror={true}
