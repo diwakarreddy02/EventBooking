@@ -21,6 +21,7 @@ const sport = [
 export default function AddEvent() {
   const [EventName, setEventname] = useState("");
   const [EventOwner, setEventOwner] = useState("");
+  const [Owner_Mail, setOwner_Mail] = useState("");
   const [Cost, setCost] = useState("");
   const [City, setEventLocation] = useState("");
   const [Date, setDate] = useState("");
@@ -38,6 +39,7 @@ export default function AddEvent() {
         Cost,
         Capacity,
         Description,
+        Owner_Mail,
         Date,
         Cancelled: false,
       }).then((res) => setShowAlert(true));
@@ -77,6 +79,17 @@ export default function AddEvent() {
         <Row>
           <Col md={6} className="mb-3">
             <Form.Control
+              type="email"
+              placeholder="Event Email Address"
+              onChange={(e) => setOwner_Mail(e.target.value)}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Please enter a valid emailaddress.
+            </Form.Control.Feedback>
+          </Col>
+          <Col md={6} className="mb-3">
+            <Form.Control
               type="number"
               placeholder="Event participation Cost"
               onChange={(e) => setCost(parseInt(e.target.value))}
@@ -87,6 +100,8 @@ export default function AddEvent() {
               Please enter a valid name.
             </Form.Control.Feedback>
           </Col>
+        </Row>
+        <Row>
           <Col md={6} className="mb-3">
             <Form.Control
               type="text"
@@ -98,8 +113,6 @@ export default function AddEvent() {
               Please enter a valid city name.
             </Form.Control.Feedback>
           </Col>
-        </Row>
-        <Row>
           <Col md={6} className="mb-3">
             <Form.Control
               type="text"
@@ -107,21 +120,21 @@ export default function AddEvent() {
               onChange={(e) => setDescription(e.target.value)}
             />
           </Col>
+        </Row>
+        <Row>
+          <Col md={6} className="mb-3">
+            <Form.Control
+              type="date"
+              placeholder="Date of Event"
+              onChange={(e) => setDate(e.target.value)}
+              min={1}
+            />
+          </Col>
           <Col md={6} className="mb-3">
             <Form.Control
               type="number"
               placeholder="Capacity"
               onChange={(e) => setCapacity(parseInt(e.target.value))}
-              min={1}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col className="mb-3">
-            <Form.Control
-              type="date"
-              placeholder="Date of Event"
-              onChange={(e) => setDate(e.target.value)}
               min={1}
             />
           </Col>

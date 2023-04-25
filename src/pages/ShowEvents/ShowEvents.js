@@ -6,11 +6,12 @@ import Footer from "../../components/Footer";
 export default function ShowEvents() {
   const [allEventData, setAllEventData] = useState([]);
   const [tempData, setTempData] = useState([]);
+  const userEmail = localStorage.getItem("email");
   useEffect(() => {
     fetchAllEvents()
       .then((res) => {
-        setAllEventData(res);
-        setTempData(res);
+        setAllEventData(res.filter((e) => e.Owner_Mail === userEmail));
+        setTempData(res.filter((e) => e.Owner_Mail === userEmail));
       })
       .catch((err) => {
         console.log(err);
@@ -19,11 +20,11 @@ export default function ShowEvents() {
 
   useEffect(() => {}, [allEventData, tempData]);
 
-
   return (
     <>
-      <div>
-        <h1>Display and Cancel Events</h1>
+      <div style={{ height: "80vh" }}>
+        <h1>My Events</h1>
+        <hr />
         <div className="justify-content-around d-flex">
           <ListGroup className="sportsContainer" style={{ width: "70%" }}>
             {allEventData.length ? (
