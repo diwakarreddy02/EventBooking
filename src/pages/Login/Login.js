@@ -62,7 +62,7 @@ export default function Login() {
     <>
       <Navbar />
 
-      <div className={styles.header}></div>
+      <div className={styles.header} style={{height: "80vh"}}></div>
       <div className={`d-flex justify-content-around ${styles.formContainer}`}>
         <Form className={styles.form} onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
