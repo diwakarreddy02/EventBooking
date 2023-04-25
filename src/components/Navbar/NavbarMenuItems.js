@@ -17,12 +17,12 @@ export const MenuItems = [
     cName: "nav-links",
     icon: "fa-solid fa-magnifying-glass",
   },
-  // {
-  //   title: "Add Venue",
-  //   url: "/AddVenue",
-  //   cName: "nav-links",
-  //   icon: "fa-light fa-location-dot",
-  // },
+  {
+    title: "Add Venue",
+    url: "/AddVenue",
+    cName: "nav-links",
+    icon: "fa-light fa-location-dot",
+  },
   {
     title: "Calendar",
     url: "/Calendars",
