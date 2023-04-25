@@ -15,6 +15,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Calendars from "./pages/Calendars/Calendars";
 import Players from "./pages/Players/Players";
+import RatingReview from "./components/RatingReview";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -44,6 +45,7 @@ function App() {
         <Route path="/AddEvent" element={<AddEvent />} />
         <Route path="/ShowEvents" element={<ShowEvents />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/RateAndReview" element={<RatingReview />} />
         <Route path="/HomePage" element={<HomePage />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Players" element={<Players />} />
