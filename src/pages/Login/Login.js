@@ -61,64 +61,68 @@ export default function Login() {
   return (
     <>
       <Navbar />
-
-      <div className={styles.header} style={{height: "20vh"}}></div>
-      <div className={`d-flex justify-content-around ${styles.formContainer}`}>
-        <Form className={styles.form} onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
-              className={styles.input}
-              type="email"
-              placeholder="Enter email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
-          {!passwordReset && (
-            <Form.Group controlId="formBasicPassword">
-              <Form.Control
-                className={styles.input}
-                type="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-          )}
-          <div className={styles.buttonContainer}>
-            <Button className={styles.button} variant="primary" type="submit">
-              {passwordReset ? "Send Link" : "Login"}
-            </Button>
+      <div>
+        <div className={styles.loginpageimage}>
+            <div className={styles.header} style={{height: "20vh"}}></div>
+              <div className={`d-flex justify-content-around ${styles.formContainer}`}>
+                <Form className={styles.form} onSubmit={handleSubmit}>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Control
+                      className={styles.input}
+                      type="email"
+                      placeholder="Enter email"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </Form.Group>
+                  {!passwordReset && (
+                    <Form.Group controlId="formBasicPassword">
+                      <Form.Control
+                        className={styles.input}
+                        type="password"
+                        placeholder="Password"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </Form.Group>
+                  )}
+                  <div className={styles.buttonContainer}>
+                    <Button className={styles.button} variant="primary" type="submit">
+                      {passwordReset ? "Send Link" : "Login"}
+                    </Button>
+                  </div>
+                  {!passwordReset && (
+                    <div className={styles.forgotPasswordContainer}>
+                      <p
+                        style={{ cursor: "pointer"}}
+                        className={styles.forgotPasswordLink}
+                        onClick={() => setPasswordReset(true)}
+                      >
+                        Forgot Password?
+                      </p>
+                    </div>
+                  )}
+                  <div className={styles.registerContainer}>
+                    <p
+                      style={{ cursor: "pointer" }}
+                      className={styles.registerLink}
+                      onClick={() => navigate("/Register")}
+                    >
+                      Don't have an account? Register
+                    </p>
+                  </div>
+                  {!passwordReset && (
+                    <div className={styles.googleButtonContainer}>
+                      <GoogleButton
+                        style={{ backgroundColor: "black" }}
+                        className={styles.googleButton}
+                        onClick={() => singInwithGoogle()}
+                      />
+                    </div>
+                  )}
+                </Form>
+              </div>
           </div>
-          {!passwordReset && (
-            <div className={styles.forgotPasswordContainer}>
-              <p
-                style={{ cursor: "pointer" }}
-                className={styles.forgotPasswordLink}
-                onClick={() => setPasswordReset(true)}
-              >
-                Forgot Password?
-              </p>
-            </div>
-          )}
-          <div className={styles.registerContainer}>
-            <p
-              style={{ cursor: "pointer" }}
-              className={styles.registerLink}
-              onClick={() => navigate("/Register")}
-            >
-              Don't have an account? Register
-            </p>
-          </div>
-          {!passwordReset && (
-            <div className={styles.googleButtonContainer}>
-              <GoogleButton
-                style={{ backgroundColor: "black" }}
-                className={styles.googleButton}
-                onClick={() => singInwithGoogle()}
-              />
-            </div>
-          )}
-        </Form>
-      </div>
+        </div>
+        
     </>
   );
 }

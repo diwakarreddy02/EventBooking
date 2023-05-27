@@ -53,8 +53,8 @@ export default function SearchEvents() {
 
   return (
     <>
-      <div>
-        <NavbarMain />
+      <div style={{marginTop:"7%"}}>
+        {/* <NavbarMain /> */}
         <NavbarPlayerSearch tempData={tempData} setPlayerData={setPlayerData} />
         <div className="justify-content-around d-flex">
           <ListGroup className="sportsContainer" style={{ width: "70%" }}>

@@ -1,8 +1,14 @@
+.bodycontainer {
+  /* background-image: url(/Users/diwakarreddy/Desktop/Projects/SE_Team_36-Event_Management_System/src/assets/loginPage.jpg); */
+  background-image: url(/Users/diwakarreddy/Desktop/Projects/SE_Team_36-Event_Management_System/src/assets/5D674A51-FE8E-4F97-AC62-A0FD4D55E21D_1_105_c.jpeg); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Segoe UI';
+  font-weight: bold;
+}
 
 .header {
   text-align: center;
-  background-color: black;
-  color:white;
   padding-top: 1%;
   padding-bottom: 0.04%;
 }
@@ -11,46 +17,43 @@
   font-size: 34px;
   font-family: Georgia;
   font-weight: bold;
-  color: white;
 }
 
 .subtitle {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 1%;
-  color: white;
   font-family: Georgia;
 }
 
 .formContainerReg {
-  max-width: 600px;
+  width: 500px;
   margin: 2rem;
-  padding: 20px;
   border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 1%;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 1);
+  margin-top: 0;
+  margin-right: auto;
+  margin-left: 17vh;
+  margin-bottom: 5%;
 }
 
 .label {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin: auto;
 }
 
 .select {
   padding: 5px 15px;
   font-size: 16px;
   border-radius: 5px;
-  border: none;
-  background-color: white;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .input {
-  padding: 10px 30px 5px 15px;
   font-size: 16px;
   border-radius: 5px;
-  background-color: white;
   margin-bottom: 10px;
 }
 
@@ -62,6 +65,8 @@
 .button {
   background-color: black;
   color: #fff;
+  width: 90%;
+  margin:auto;
   border-radius: 5px;
   padding: 10px 10px;
   font-size: 16px;
@@ -73,10 +78,6 @@
   font-weight: bold;
 }
 
-.col12 {
-  width: 100%;
-  margin-bottom: 20px;
-}
 
 .mb_3 {
   margin-bottom: 20px;

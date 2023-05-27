@@ -1,10 +1,13 @@
-.body {
-  background-color: whitesmoke;
-  background-size: cover;
+.loginpageimage {
+  /* background-image: url(/Users/diwakarreddy/Desktop/Projects/SE_Team_36-Event_Management_System/src/assets/loginPage.jpg); */
+  background-image: url(/Users/diwakarreddy/Desktop/Projects/SE_Team_36-Event_Management_System/src/assets/5D674A51-FE8E-4F97-AC62-A0FD4D55E21D_1_105_c.jpeg);
+  background-size:cover;
+  background-repeat: no-repeat;
+  font-family: 'Segoe UI';
+  font-weight: bold;
 }
 
 .header {
-  background-color: #1c2331;
   padding: 7rem;
   text-align: center;
   padding-bottom: 2.7%;
@@ -27,10 +30,16 @@
 }
 
 .form {
-  background-color: #ffffff;
+  /* background-color: rgba(227, 199, 191, 0.2); */
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
-  padding: 2rem;
+  padding: 2.5rem;
   width: 500px;
+  box-shadow: 2px 5px 20px rgb(0, 0, 0);
+  margin-bottom: 10rem;
+  /* margin-top: 5rem; */
+  margin-right: auto;
+  margin-left: 20vh;
 }
 
 .label {
@@ -55,6 +64,7 @@
 }
 
 .forgotPasswordContainer {
+  color: #fff;
   margin-top: 1rem;
   text-align: center;
 }
@@ -85,6 +95,19 @@
 .googleButton {
   background-color: black;
 }
+
+.input {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: rgba(227, 199, 191, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.input::placeholder {
+  color: black;
+  font-weight: bold;
+  font-family: 'Segoe UI';
+}
+
 
 
 

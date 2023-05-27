@@ -38,7 +38,7 @@ export default function NavbarSportSearch({ tempData, setAllSportsData }) {
   };
   return (
     <>
-      <div style={{ marginTop: "10%" }}>
+      <div style={{ marginTop: "7%" }}>
         <Navbar
           bg="dark"
           className="mx-5"

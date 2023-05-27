@@ -10,12 +10,12 @@
 
 .NavbarItems {
   display: flex;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
   /* color: #222; */
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.5);
   width: 95%;
   height: 80px;
   border-radius: 13px;
@@ -84,14 +84,16 @@ button {
   cursor: pointer;
   transition: 0.2s ease-in-out;
   font-family: Georgia;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 button:hover {
   /* height: 100px;
    width: 150px; */
-  background-color: whitesmoke;
+  background-color: rgba(246, 246, 246, 0.5);
   color: #000;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .menu-icons {
